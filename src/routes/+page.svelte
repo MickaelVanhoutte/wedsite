@@ -1,27 +1,7 @@
 <script lang="ts">
 	import welcome from '$lib/images/us-home.jpg';
 	import wedCard from '$lib/images/wed-card.jpg';
-	import { Spotifly } from "spotifly";
-	import type { SpotifySearchTracks } from 'spotifly/dist/types';
-	const sp = new Spotifly();
-
-	let searchTerm = '';
-	let tracks: string[] = [];
-
-	function search() {
-		console.log('searching ' + searchTerm);
-		if(searchTerm?.length > 3){
-			sp.searchTracks(searchTerm, 5).then((res) => {
-				tracks = res.data.searchV2.tracksV2.items?.map((track) => {
-					const band = track.item?.data?.artists?.items?.map((artist) => artist?.profile?.name).join(', ');
-					return band + ": " + track.item?.data?.name;
-				});
-			}).catch((err) => {
-				console.error(err);
-			});
-		}
-		
-	}
+	import bg from '$lib/images/bg.jpeg';
 </script>
 
 <svelte:head>
@@ -30,7 +10,7 @@
 </svelte:head>
 
 <div class="backgrounds">
-	<div class="background aos-init aos-animate" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero" style="background-image: url('src/lib/images/bg.jpeg');"></div>
+	<div class="background aos-init aos-animate" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero" style="background-image: url({bg});"></div>
 </div>
 
 
@@ -55,37 +35,22 @@
 	
 		<div class="code" data-aos="fade-up-right">
 			<h1>Envie de musique ?</h1>
-			<form action="mailto:hktmika@gmail.com" method="post" enctype="text/plain">
-				Name:<br>
-				<input type="text" name="name"><br>
-				Music:<br>
-				<input type="text" name="track" size="50" bind:value={searchTerm}><br>
-				<button on:click|preventDefault={() => search()}>Search</button>
-				{#if tracks?.length > 0}
-					<select name="track">
-						{#each tracks as track}
-							<option value={track}>{track}</option>
-						{/each}
-					</select>
-				{/if}
-				<br>
+			<p>Nous ne prendrons probablement pas en compte toutes vos demandes, mais qui sait ?</p>
+			<form action="mailto:vzwed2025@gmail.com" method="post" enctype="text/plain">
+		
+				<textarea style="width: 100%; height: 220px" 
+				placeholder="{'artiste:titre\nartiste:titre\n...'}"></textarea><br>
+				
 				<input type="submit" value="Send">
 			</form>
 		</div>
-		<div class="code" data-aos="fade-up-left">
-			<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-aos</span>=<span class="hljs-value">"fade-up-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-		</div>
-		<div class="code" data-aos="fade-up-right">
-			<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-aos</span>=<span class="hljs-value">"fade-up-right"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-		</div>
-		<div class="code" data-aos="fade-up-left">
-			<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-aos</span>=<span class="hljs-value">"fade-up-left"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
-		</div>
+
 	</div>
 </section>
 
 <style lang="scss">
-	
+
+
 	.hero {
 		display: flex;
 		flex-direction: row;
@@ -126,10 +91,13 @@
 		border-radius: 2px;
 		margin: 10vh 0;
 		padding: 10px;
+		box-sizing: border-box;
 	}
 
 	.container {
 		width: 50%;
+		overflow-x: hidden;
+		box-sizing: border-box;
 	}
 
 	section {
@@ -144,6 +112,27 @@
 		width: 100%;
 		color: white;
 	}
+
+	@media screen and (max-width: 768px) {
+		.hero {
+			flex-direction: column;
+			width: 100dvw;
+			margin: 10dvw 0;
+
+			img {
+				width: 90%;
+			}
+		}
+
+		.container {
+			width: 100%;
+		}
+
+		.code {
+			padding: 0 5%;
+		}
+	}
+	
 
 
 </style>

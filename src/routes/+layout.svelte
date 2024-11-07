@@ -1,9 +1,9 @@
 <script>
-	import Header from './Header.svelte';
 	import '../app.css';
 	import Aos from 'aos';
 	import { onMount } from 'svelte';
 	import 'aos/dist/aos.css';
+	export const prerender = true;
 
   	onMount(() => {
 		Aos.init();
