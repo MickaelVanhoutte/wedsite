@@ -38,7 +38,7 @@
 			<p>Nous ne prendrons probablement pas en compte toutes vos demandes, mais qui sait ?</p>
 			<form action="mailto:vzwed2025@gmail.com" method="post" enctype="text/plain">
 		
-				<textarea style="width: 100%; height: 220px" 
+				<textarea name="tracks" style="width: 100%; height: 220px" 
 				placeholder="{'artiste:titre\nartiste:titre\n...'}"></textarea><br>
 				
 				<input type="submit" value="Send">
