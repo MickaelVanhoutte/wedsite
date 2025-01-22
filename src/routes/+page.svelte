@@ -27,7 +27,7 @@
 
 <nav class="sticky navbar">
 	<div class="brand  display__logo">
-		<a href="#top" class="nav__link"> <span class="logo">Mathilde & Mickaël wedding ~ <bold>27/09/25</bold></span></a>
+		<a href="#" class="nav__link"> <span class="logo">Mathilde & Mickaël wedding ~ <bold>27/09/25</bold></span></a>
 	</div>
 
 	<input type="checkbox" id="nav" class="hidden" />
