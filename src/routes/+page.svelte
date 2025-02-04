@@ -21,13 +21,13 @@
 <header class="header">
 	<div class="hero">
 		<img src={welcome} alt="Welcome" />
-		<img src={wedCard} alt="Card" />
+		
 	</div>
 </header>
 
 <nav class="sticky navbar">
 	<div class="brand  display__logo">
-		<a href="#" class="nav__link"> <span class="logo">Mathilde & Mickaël wedding ~ <bold>27/09/25</bold></span></a>
+		<a href="#" class="nav__link"> <span class="logo">Mathilde & Mickaël ~ </span><bold>27/09/25</bold></a>
 	</div>
 
 	<input type="checkbox" id="nav" class="hidden" />
@@ -46,7 +46,7 @@
 <section class="section section--code">
 	<div class="container">
 
-		<div class="code" id="dress-code" style="background: rgb(197 103 103);">
+		<div class="code" id="dress-code" style="background: #70162e;">
 			<h1>Le dress code: années 40 !</h1>
 			<div class="_content" class:opened={opened}>
 			<p>
@@ -126,19 +126,19 @@
 			</div>
 		</div>
 
-		<div class="code" id="mairie" style="background: rgb(197 103 103);">
+		<div class="code" id="mairie" style="background: #70162e;">
 			<h1>Mairie, 13h30</h1>
 			<p>Mairie de Douai 83 Rue de la Mairie, 59500 Douai</p>
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.9390057587643!2d3.0805721999999998!3d50.367691799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2c967c812a74f%3A0x3955107e8d5a47a2!2sMairie%20de%20Douai!5e0!3m2!1sfr!2sfr!4v1727466178463!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 
-		<div class="code" id="vin" style="background: rgb(197 103 103);">
+		<div class="code" id="vin" style="background: #70162e;">
 			<h1>Vin d'honneur, 16h</h1>
 			<p>La Belle Grange 751 Bernstraete, 59270 Bailleul</p>
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.78350911202!2d2.6827663767118977!3d50.705401868973794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dcdf7f7fea7c77%3A0xa722ce9ba7ca02f9!2sLa%20Belle%20Grange!5e0!3m2!1sfr!2sfr!4v1727466332357!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 	
-		<div class="code" id="musique"  style="background: rgb(197 103 103);">
+		<div class="code" id="musique"  style="background: #70162e;">
 			<h1>Envie de musique ?</h1>
 			<p>Nous ne prendrons probablement pas en compte toutes vos demandes, mais qui sait ?</p>
 			<form action="mailto:vzwed2025@gmail.com" method="post" enctype="text/plain">
@@ -146,7 +146,9 @@
 				<textarea name="tracks" style="width: 100%; height: 160px" 
 				placeholder="{'artiste:titre\nartiste:titre\n...'}"></textarea><br>
 				
+				<div style="display: flex; justify-content: flex-end;">
 				<input type="submit" value="Send">
+			</div>
 			</form>
 		</div>
 
@@ -175,7 +177,8 @@
 		width: 100dvw;
 
 		img {
-			height: 100%;
+			width: 100%;
+			height: auto;
 		}
 	}
 
@@ -512,6 +515,9 @@
 	}
 
 	@media screen and (max-width: 799px) {
+		.logo {
+			display: none;
+		}
 		.nav {
 			position: fixed;
 			top: 0;
