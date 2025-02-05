@@ -1,28 +1,22 @@
 <script lang="ts">
-	import Carousel from 'svelte-carousel';
+	import Carousel from 'svelte-light-carousel';
 	import welcome from '$lib/images/us-home.jpg';
 	import dance from '$lib/sound/dance.mp3';
 
-	let carousel: Carousel;
-	let carousel2: Carousel;
-	function showPrevPage() {
-		carousel.goToPrev({ animated: true });
-	}
+	let fullPic: HTMLDivElement;
+	let womenImg = [];
+	let menImg = [];
 
-	function showNextPage() {
-		carousel.goToNext({ animated: true });
-	}
-
-	function showPrevPage2() {
-		carousel2.goToPrev({ animated: true });
-	}
-
-	function showNextPage2() {
-		carousel2.goToNext({ animated: true });
-	}
-
-	let womenImg = [...Array(31).keys()].map((i) => `/wedsite/src/lib/images/inspi/women/${i}.jpg`);
-	let menImg = [...Array(10).keys()].map((i) => `/wedsite/src/lib/images/inspi/men/${i}.jpg`);
+	[...Array(31).keys()].forEach((i) => {
+		import(`$lib/images/inspi/women/${i}.jpg`).then((img) => {
+			womenImg = [...womenImg, img.default];
+		});
+	});
+	[...Array(10).keys()].forEach((i) => {
+		import(`$lib/images/inspi/men/${i}.jpg`).then((img) => {
+			menImg = [...menImg, img.default];
+		});
+	});
 
 	let women = false;
 	let men = false;
@@ -147,7 +141,7 @@
 
 				<h3 style="font-weight: bold; color: white">Inspirations</h3>
 				<div class="carousel-wrapper">
-					<Carousel
+					<!-- <Carousel
 						bind:this={carousel}
 						let:loaded
 						let:showPrevPage
@@ -167,7 +161,40 @@
 						<div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
 							<i />
 						</div>
-					</Carousel>
+					</Carousel> -->
+
+	<Carousel style="height:100%" containerClass={'px-10'} slides={womenImg}  layout={{default: 1}} partialDelta={{default: 120}}>
+		<div style="height:100%;" slot="slide" let:slide>
+			<div style="background-image:url('{slide}');height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;" 
+	on:click={() => {
+		fullPic.style.backgroundImage = 'url(' + slide + ')';
+		fullPic.style.display = 'block';
+	}} />
+		</div>
+		<div
+		slot="progress"
+		let:progress
+		let:scrollTo
+		data-progress
+		on:pointerdown={scrollTo}
+		class="absolute left-1/4 -bottom-5 w-1/2 overflow-hidden cursor-pointer h-2 justify-center flex items-center z-10 rounded-sm bg-slate-500"
+	>
+		<div
+			style:transform={`scaleX(${progress}%)`}
+			class="w-full h-full pointer-events-none transition-all ease-linear origin-left bg-slate-200"
+		/>
+	</div>
+	</Carousel>
+
+	
+
+
+
+	
 				</div>
 			</div>
 			<div class="_content" class:opened={men}>
@@ -294,7 +321,35 @@
 
 				<h3 style="font-weight: bold; color: white">Inspirations</h3>
 				<div class="carousel-wrapper">
-					<Carousel
+
+					<Carousel style="height:100%" containerClass={'px-10'} slides={menImg}  layout={{default: 1}} partialDelta={{default: 120}}>
+						<div style="height:100%;" slot="slide" let:slide>
+							<div style="background-image:url('{slide}');height: 100%;
+					width: 100%;
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;"
+					on:click={() => {
+						console.log('toto')
+						fullPic.style.backgroundImage = 'url(' + slide + ')';
+						fullPic.style.display = 'block';
+					}} />
+						</div>
+						<div
+						slot="progress"
+						let:progress
+						let:scrollTo
+						data-progress
+						on:pointerdown={scrollTo}
+						class="absolute left-1/4 -bottom-5 w-1/2 overflow-hidden cursor-pointer h-2 justify-center flex items-center z-10 rounded-sm bg-slate-500"
+					>
+						<div
+							style:transform={`scaleX(${progress}%)`}
+							class="w-full h-full pointer-events-none transition-all ease-linear origin-left bg-slate-200"
+						/>
+					</div>
+					</Carousel>
+					<!-- <Carousel
 						bind:this={carousel2}
 						let:loaded
 						let:showPrevPage2
@@ -314,7 +369,7 @@
 						<div slot="next" on:click={showNextPage2} class="custom-arrow custom-arrow-next">
 							<i />
 						</div>
-					</Carousel>
+					</Carousel> -->
 				</div>
 			</div>
 			<div class="_footer">
@@ -374,12 +429,14 @@
 				></textarea><br />
 
 				<div style="display: flex; justify-content: flex-end;">
-					<input type="submit" value="Send" />
+					<input class="button" type="submit" value="Send" />
 				</div>
 			</form>
 		</div>
 	</div>
 </section>
+
+<div bind:this={fullPic} id="fullpage" on:click={() => fullPic.style.display = 'none'}></div>
 
 <audio id="musicplayer" autoplay style="visibility: hidden;">
 	<source src={dance} />
@@ -396,10 +453,20 @@
 	}
 
 	.carousel-wrapper {
+		box-sizing: border-box;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 1rem;
+		border-radius: 1rem;
 		display: flex;
 		justify-content: center;
-		width: 50%;
-		margin: auto;
+		width: 80%;
+		height: 500px;
+		margin: 0 auto 2rem auto;
+	}
+
+
+	:global([data-carousel-slider]) {
+		height: 100% !important;
 	}
 
 	.hero {
@@ -486,8 +553,8 @@
 			}
 		}
 
-		button:not(.link),
-		input {
+		button.button,
+		input.button {
 			background-color: var(--primary);
 			border-radius: 8px;
 			border-style: none;
@@ -514,8 +581,10 @@
 			touch-action: manipulation;
 		}
 
-		button:hover,
-		button:focus {
+		button.button:hover,
+		button.button:focus,
+		input.button:hover,
+		input.button:focus {
 			background-color: #f082ac;
 		}
 	}
@@ -744,12 +813,394 @@
 		}
 	}
 
-	@media screen and (max-width: 799px) {
+	
+
+	#nav:checked + .nav__open {
+		transform: rotate(45deg);
+	}
+
+	#nav:checked + .nav__open i {
+		background-color: var(--shades);
+		transition: transform 0.2s ease;
+	}
+
+	#nav:checked + .nav__open i:nth-child(1) {
+		transform: translateY(6px) rotate(180deg);
+	}
+
+	#nav:checked + .nav__open i:nth-child(2) {
+		opacity: 0;
+	}
+
+	#nav:checked ~ .nav__item a {
+		display: block !important;
+	}
+
+	#nav:checked + .nav__open i:nth-child(3) {
+		transform: translateY(-6px) rotate(90deg);
+	}
+
+	#nav:checked ~ .nav {
+		z-index: 9990;
+		opacity: 1;
+		left: 0;
+	}
+
+	#nav:checked ~ .nav ul li a {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.custom-arrow {
+		width: 40px;
+		background-color: rgb(0, 0, 0);
+		opacity: 0.3;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition: opacity 150ms;
+	}
+
+	.custom-arrow-prev {
+		left: 0px;
+	}
+
+	.custom-arrow-next {
+		right: 0px;
+	}
+
+	.custom-arrow > i {
+		position: relative;
+		border-style: solid;
+		border-color: rgb(255, 255, 255);
+		border-image: initial;
+		border-width: 0px 5px 5px 0px;
+		padding: 5px;
+	}
+
+	.custom-arrow-prev > i {
+		transform: rotate(135deg);
+		right: -4px;
+	}
+
+	.custom-arrow-next > i {
+		transform: rotate(-45deg);
+		left: -4px;
+	}
+
+	[data-carousel-container] {
+    position: relative;
+    overflow: visible;
+    min-height: 100%;
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+	.btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+    border-color: hsl(var(--b2) / var(--tw-border-opacity));
+    text-align: center;
+    transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;
+    transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;
+    transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-duration: .2s;
+    border-radius: var(--rounded-btn, .5rem);
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    line-height: 1em;
+    min-height: 3rem;
+    gap: .5rem;
+    font-weight: 600;
+    text-decoration-line: none;
+    border-width: var(--border-btn, 1px);
+    animation: button-pop var(--animation-btn, .25s) ease-out;
+    text-transform: var(--btn-text-case, uppercase);
+    --tw-border-opacity: 1;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: hsl(var(--bc) / var(--tw-text-opacity));
+    outline-color: hsl(var(--bc) / 1)
+}
+
+.opacity-50 {
+    opacity: .5;
+}
+.\!cursor-not-allowed {
+    cursor: not-allowed !important;
+}
+.w-fit {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.top-0 {
+    top: 0;
+}
+.left-0 {
+    left: 0;
+}
+.bottom-0 {
+    bottom: 0;
+}
+.absolute {
+    position: absolute;
+}
+.w-fit {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.px-10 {
+	height: 100%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.aria-\[selected\=\"true\"\]\:bg-slate-100[aria-selected=true] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+.aria-\[selected\=\"true\"\]\:scale-125[aria-selected=true] {
+    --tw-scale-x: 1.25;
+    --tw-scale-y: 1.25;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.bg-slate-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+.rounded-full {
+    border-radius: 9999px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.w-4 {
+    width: 1rem;
+}
+.h-4 {
+    height: 1rem;
+}
+
+.w-1\/2 {
+    width: 50%;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+button, [type=button], [type=reset], [type=submit] {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+}
+button, select {
+    text-transform: none;
+}
+
+*, :before, :after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: #e5e7eb;
+    border-top-color: rgb(229, 231, 235);
+    border-right-color: rgb(229, 231, 235);
+    border-bottom-color: rgb(229, 231, 235);
+    border-left-color: rgb(229, 231, 235);
+}
+
+@keyframes button-pop {
+    0% {
+        transform: scale(var(--btn-focus-scale, .98))
+    }
+
+    40% {
+        transform: scale(1.02)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+button:active:hover,.btn:active:focus {
+    animation: button-pop 0s ease-out;
+    transform: scale(var(--btn-focus-scale, .97))
+}
+
+.gap-2 {
+    gap: .5rem;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+
+.flex {
+    display: flex
+;
+}
+.z-10 {
+    z-index: 10;
+}
+.left-1\/4 {
+    left: 25%;
+}
+.-bottom-10 {
+    bottom: -2.5rem;
+}
+.absolute {
+    position: absolute;
+}
+
+.bg-slate-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+.rounded-sm {
+    border-radius: .125rem;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.w-1\/2 {
+    width: 50%;
+}
+.h-2 {
+    height: .5rem;
+}
+.flex {
+    display: flex
+;
+}
+.z-10 {
+    z-index: 10;
+}
+.left-1\/4 {
+    left: 25%;
+}
+.-bottom-5 {
+    bottom: -2.25rem;
+}
+
+.ease-linear {
+    transition-timing-function: linear;
+}
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.bg-slate-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+.origin-left {
+    transform-origin: left;
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+
+#fullpage {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-color: black;
+}
+
+@media screen and (max-width: 799px) {
 		.carousel-wrapper {
 			display: flex;
 			justify-content: center;
 			width: 100%;
 		}
+
+		.w-4 {
+			width: .5rem;
+		}
+		.h-4 {
+			height: .5rem;
+		}
+
+		.w-1\/2 {
+			width: 100%;
+		}
+
+
 		.logo {
 			display: none;
 		}
@@ -850,82 +1301,4 @@
 		}
 	}
 
-	#nav:checked + .nav__open {
-		transform: rotate(45deg);
-	}
-
-	#nav:checked + .nav__open i {
-		background-color: var(--shades);
-		transition: transform 0.2s ease;
-	}
-
-	#nav:checked + .nav__open i:nth-child(1) {
-		transform: translateY(6px) rotate(180deg);
-	}
-
-	#nav:checked + .nav__open i:nth-child(2) {
-		opacity: 0;
-	}
-
-	#nav:checked ~ .nav__item a {
-		display: block !important;
-	}
-
-	#nav:checked + .nav__open i:nth-child(3) {
-		transform: translateY(-6px) rotate(90deg);
-	}
-
-	#nav:checked ~ .nav {
-		z-index: 9990;
-		opacity: 1;
-		left: 0;
-	}
-
-	#nav:checked ~ .nav ul li a {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.custom-arrow {
-		width: 40px;
-		background-color: rgb(0, 0, 0);
-		opacity: 0.3;
-		position: absolute;
-		top: 0px;
-		bottom: 0px;
-		z-index: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		-webkit-tap-highlight-color: transparent;
-		transition: opacity 150ms;
-	}
-
-	.custom-arrow-prev {
-		left: 0px;
-	}
-
-	.custom-arrow-next {
-		right: 0px;
-	}
-
-	.custom-arrow > i {
-		position: relative;
-		border-style: solid;
-		border-color: rgb(255, 255, 255);
-		border-image: initial;
-		border-width: 0px 5px 5px 0px;
-		padding: 5px;
-	}
-
-	.custom-arrow-prev > i {
-		transform: rotate(135deg);
-		right: -4px;
-	}
-
-	.custom-arrow-next > i {
-		transform: rotate(-45deg);
-		left: -4px;
-	}
 </style>

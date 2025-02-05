@@ -38,6 +38,6 @@
 	"type": "module",
 	"dependencies": {
 		"aos": "^2.3.4",
-		"svelte-carousel": "github:vadimkorr/svelte-carousel#pull/142/head"
+		"svelte-light-carousel": "^1.0.5"
 	}
 }
