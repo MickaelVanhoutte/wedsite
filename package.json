@@ -1,5 +1,6 @@
 {
 	"name": "wedsite",
+	"homepage": "https://mickaelvanhoutte.github.io/wedsite/",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
@@ -36,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"aos": "^2.3.4"
+		"aos": "^2.3.4",
+		"svelte-carousel": "github:vadimkorr/svelte-carousel#pull/142/head"
 	}
 }

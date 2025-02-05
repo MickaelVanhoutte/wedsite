@@ -1,10 +1,31 @@
 <script lang="ts">
+	import Carousel from '$lib/node_module/Carousel.svelte';
 	import welcome from '$lib/images/us-home.jpg';
-	import wedCard from '$lib/images/wed-card.jpg';
-	import bg from '$lib/images/bg.jpeg';
 	import dance from '$lib/sound/dance.mp3';
 
-	let opened = false;
+	let carousel: Carousel;
+	let carousel2: Carousel;
+	function showPrevPage() {
+		carousel.goToPrev({ animated: true })
+	}
+
+	function showNextPage() {
+		carousel.goToNext({ animated: true })
+	}
+
+	function showPrevPage2() {
+		carousel2.goToPrev({ animated: true })
+	}
+
+	function showNextPage2() {
+		carousel2.goToNext({ animated: true })
+	}
+
+	let womenImg = [...Array(31).keys()].map(i => `/wedsite/src/lib/images/inspi/women/${i}.jpg`);
+	let menImg = [...Array(10).keys()].map(i => `/wedsite/src/lib/images/inspi/men/${i}.jpg`);
+
+	let women = false;
+	let men = false;
 </script>
 
 <svelte:head>
@@ -48,13 +69,15 @@
 
 		<div class="code" id="dress-code" style="background: #70162e;">
 			<h1>Le dress code: années 40 !</h1>
-			<div class="_content" class:opened={opened}>
 			<p>
 				On vous rassure, notre mariage n’est pas un rassemblement historique ! On ne vous demande pas de courir les friperies afin de trouver le graal. 
 			</p>
 			<p>
 				Toutefois, cela nous tient véritablement à cœur que chacun d’entre vous colle au thème. 
 			</p>
+			<div class="_content" class:opened={women}>
+
+			
 			<h3 style="font-weight: bold; color: white">
 				Alors Mesdames, par où commencer ?
 			</h3>
@@ -114,15 +137,173 @@
 			<p style="font-weight: bold">
 				Quoi qu’il arrive n’hésitez pas à m’envoyer ce que vous avez repéré !
 			</p>
+
 			<h3 style="font-weight: bold; color: white">
-				Et pour ces Messieurs ? 
+				Inspirations
 			</h3>
+			<div class="carousel-wrapper">
+				<Carousel bind:this={carousel} let:loaded let:showPrevPage let:showNextPage style="width: 50%">
+					<div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev">
+						<i />
+					  </div>
+					{#each womenImg as src, imageIndex (src)}
+						<div class="img-container" style="display: flex; justify-content:center;">
+							{#if loaded.includes(imageIndex)}
+								<img style="height: 300px; width: auto" {src} alt="inspiration" />
+							{/if}
+						</div>
+					{/each}
+					<div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
+						<i />
+					  </div>
+				</Carousel>
+
+			</div>
+	
+			</div>
+			<div class="_content" class:opened={men}>
+				<h3 style="font-weight: bold; color: white">La mode masculine des années 40.</h3>
+
+				<p>
+					Ce qui rend la mode masculine des années 1940 unique à la décennie, c’est la coupe des
+				vêtements, les motifs et les détails stylistiques qui démontraient le soutien patriotique d’une
+				personne à son pays (ou son absence).
+				</p>
+				<p>
+					Certains des détails clés de la mode masculine des années 1940 sont des pantalons taille haute
+					et larges, des manteaux de costume à revers larges ,des chemises à col large, des cravates
+					colorées et larges, des chaussures oxford bicolores et des chapeaux fedora à large bord. 
+					Remarquez que la tendance était large ? Par rapport à la coupe skinny d’aujourd’hui, les années
+					1940 étaient axées sur le confort par le volume.
+				</p>
+				<p>
+					La plupart des hommes ont conservé leurs vêtements des années 1930 et les ont portés jusqu’au
+					début des années 40. C’était un signe de soutien à la guerre que d’être vu dans les costumes et
+					les manteaux d’avant-guerre. Les chaussures ont été ressemelées et les chapeaux remodelés
+					aussi longtemps que possible. Les vêtements usagés ont été transmis à l’appartenance familiale
+					et transformés en looks. Les costumes étaient principalement vendus sans gilet.
+					La plus grande influence des restrictions de la Seconde Guerre mondiale sur la mode masculine
+					a été l’introduction de la décontraction. Les hommes étaient fatigués des uniformes et des
+					costumes confinés.
+				</p>
+				
+			
+				<h3 style="font-weight: bold; color: white">LA MATIÈRE</h3>
 			<p>
-				Les pantalons larges étaient populaires, souvent associés à des vestes ajustées. Les hommes portaient également des chemises à col boutonné et des cravates étroites pour compléter leur tenue. Les chaussures en cuir étaient préférées et les chapeaux étaient également un accessoire courant.
+				Les costumes des hommes des années 1940 étaient généralement fabriqués à partir de laine
+				épaisse, de laine peignée ou de tweed, mais pendant la guerre, des tissus de rayonne
+				synthétique mélangés à de la laine étaient généralement utilisés à la place.
 			</p>
+		
+				<h3 style="font-weight: bold; color: white">LA COULEUR</h3>
+				<p>
+				Les couleurs des costumes pour hommes des années 1940 étaient atténuées : noir, bleu
+				marine, gris, brun foncé, beige et bleu moyen. Pendant l’été, les couleurs de tissu plus claires
+				étaient le gris moyen, le brun, le bleu moyen, le bleu-vert sarcelle et le beige. Le blanc et l’ivoire,
+				qui avaient été incroyablement populaires dans les années 1930, se sont lentement estompés,
+				n’étant portés que dans les climats tropicaux chauds.
+			</p>
+				<p>
+				La plupart des costumes pour hommes des années 40 n’étaient pas de couleurs unies. Le tweed,
+				les chevrons, les carreaux, les rayures et les surplaids étaient des motifs de costume très
+				populaires. Les larges rayures craie étaient également un motif de costume classique des
+				années 40.
+			</p>
+				<h3 style="font-weight: bold; color: white">LA VESTE</h3>
+				<p>La veste à simple boutonnage avait 2-3 boutons, de larges épaules rembourrées, des poches
+				plaquées ou fendues et légèrement effilée à la taille. Les revers étaient larges, crantés ou en
+				pointe avec des bords arrondis. La grande largeur faisait paraître un homme plus grand, même si
+				la coupe était plus étroite que dans les années 30.
+			</p>
+			<p>
+				La veste à double boutonnage était encore plus populaire dans les années 1940 en raison de
+				la largeur supplémentaire qu’elle provoquait, bien que les ventes aient été limitées pendant les
+				années de guerre.
+			</p>
+				<h3 style="font-weight: bold; color: white">LE GILET</h3>
+				<p>Les gilets de costume pour hommes des années 1940 étaient considérés comme un gaspillage à
+				la fois en temps de guerre et après, et la plupart des hommes préféraient ne pas porter de gilet
+				du tout avec leurs costumes. C’était plus frais et plus confortable sans eux.
+				Les gilets de costume assortis étaient coupés à col en V avec 7 à 6 boutons et des poches de
+				chaque côté.
+			</p>
+				<h3 style="font-weight: bold; color: white">LE PANTALON</h3>
+				<p>Les pantalons de costume, les pantalons ou les pantalons des années 1940 étaient
+				généralement plats ou à plis simples. Ils étaient portés à la taille haute (au-dessus du nombril)
+				avec une bande de taille de 7.5cm de large.
+			</p>
+			<p>
+				Les jambes du pantalon étaient larges autour de la cuisse, du genou et de la cheville
+				légèrement fuselée, ce qui est à l’opposé des costumes « skinny » d’aujourd’hui.
+				Les pantalons larges et taille haute sont difficiles à trouver dans les magasins aujourd’hui (bien
+				que cela change lentement.
+			</p>
+				<h3 style="font-weight: bold; color: white">LA CHEMISE</h3>
+				<p>Les chemises habillées des hommes des années 1940 étaient généralement fabriquées en
+				coton avec un grand col pointu attaché appelé col pointe de lance au début des années
+				1940 et un col classique plus court à la fin des années 1940. Les colliers modernes
+				d’aujourd’hui sont beaucoup plus petits.
+			</p><p>
+				Les chemises pour hommes des années 1940 étaient très colorées. Le blanc était une option,
+				mais les hommes choisissaient des chemises bleues, beiges, jaunes, vertes ou grises à rayures
+				fines ou à pois.
+				La chemise était portée rentrée, avec une poche unique facultative sur la poitrine.
+			</p>
+				<h3 style="font-weight: bold; color: white">LES ACCESSOIRES</h3>
+				<p>
+				Les bretelles étaient encore portées par les hommes dans les années 1940, bien que les
+				ceintures soient plus populaires.
+				Les bretelles pour hommes des années 1940 étaient dotées d’épaisses bandes élastiques
+				avec des boucles de boutonnage. Des boutons ont été cousus à l’intérieur de la ceinture pour
+				attacher également des bretelles. Les bretelles étaient rarement visibles, portées sous un gilet de
+				costume ou un gilet ou cachées derrière le costume ou le manteau. 
+			</p>
+			<p>
+				Les ceintures pour hommes des années 1940 mesuraient environ 2.5cm de large avec de
+				petites boucles métalliques souvent recouvertes de cuir assorti. Le cuir de la ceinture était beige,
+				marron ou noir et pouvait être uni ou grainé, tressé ou estampillé d’un motif western.
+			</p>
+			<p>
+				Aucun costume d’homme des années 1940 ne serait complet sans la cravate parfaite ! Les
+				cravates des années 1940 étaient fabriquées exclusivement à partir de soie, de rayonne et de
+				laine. Les grandes lignes géométriques, les lignes bouclées, les monogrammes et le style Art
+				déco ont été réalisés dans des couleurs patriotiques vives. Animaux, plantes, fleurs, oiseaux,
+				westerns et tropicaux étaient partout.
+			</p>
+			<p>
+				Aucun costume des années 1940 ne serait complet sans un mouchoir de poche. Ceux-ci ont
+				été fabriqués à partir de rayonne ou de soie après la guerre et étaient souvent de couleurs vives,
+				ou ils avaient des motifs cachemire ou d’autres motifs classiques. Les mouchoirs de poche des
+				hommes des années 1940 étaient pliés en triangle et placés côté ouvert vers le haut, exposant
+				deux ou trois pointes.
+			</p>
+
+			<h3 style="font-weight: bold; color: white">
+				Inspirations
+			</h3>
+			<div class="carousel-wrapper">
+				<Carousel bind:this={carousel2} let:loaded let:showPrevPage2 let:showNextPage2 style="width: 50%">
+					<div slot="prev" on:click={showPrevPage2} class="custom-arrow custom-arrow-prev">
+						<i />
+					  </div>
+					{#each menImg as src, imageIndex (src)}
+						<div class="img-container" style="display: flex; justify-content:center;">
+							{#if loaded.includes(imageIndex)}
+								<img style="height: 300px; width: auto" {src} alt="inspiration" />
+							{/if}
+						</div>
+					{/each}
+					<div slot="next" on:click={showNextPage2} class="custom-arrow custom-arrow-next">
+						<i />
+					  </div>
+				</Carousel>
+
+			</div>
+
 			</div>
 			<div class="_footer">
-				<button class="link" on:click="{() => opened = !opened}">{opened ? 'Voir moins' : 'Lire plus'}</button>
+				<button class="link" on:click="{() => { men = false; women = !women;}}">{women ? 'Voir moins' : 'Mesdames'}</button>
+				<button class="link" on:click="{() => { women = false; men = !men;}}">{men ? 'Voir moins' : 'Messieurs'}</button>
 			</div>
 		</div>
 
@@ -160,14 +341,23 @@
 </audio>
 
 <style lang="scss">
+
 	* {
 		font-family: "Roboto", serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
 		font-style: normal;
 		font-variation-settings: "wdth" 100;
+		--sc-color-rgb-light: rgb(255, 255, 255);
 	}
 
+	.carousel-wrapper {
+		display: flex;
+		justify-content: center;
+		width: 50%;
+		margin: auto;
+	}
+	
 	.hero {
 		display: flex;
 		flex-direction: row;
@@ -231,7 +421,7 @@
 
 		._content:not(.opened){
 			overflow: hidden;
-			max-height: 200px;
+			max-height: 0;
 			transition: max-height 0.2s ease-out;
 			text-overflow: ellipsis;
 		
@@ -241,6 +431,7 @@
 			display: flex;
 			justify-content: center;
 			padding: 1rem;
+			gap: 1rem;
 
 			button.link {
 				background: none;
@@ -422,7 +613,7 @@
 		position: -webkit-sticky;
 		position: sticky;
 		top: 0;
-		z-index: 1;
+		z-index: 2;
 	}
 
 	.hidden {
@@ -515,6 +706,11 @@
 	}
 
 	@media screen and (max-width: 799px) {
+		.carousel-wrapper {
+			display: flex;
+			justify-content: center;
+			width: 100%
+		}
 		.logo {
 			display: none;
 		}
@@ -654,5 +850,47 @@
 	}
 		
 
+	.custom-arrow {
+		width: 40px;
+		background-color: rgb(0, 0, 0);
+		opacity: 0.3;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition: opacity 150ms;
+	}
+	
+	.custom-arrow-prev {
+		left: 0px;
+	}
+
+	.custom-arrow-next {
+		right: 0px;
+	}
+
+	.custom-arrow > i {
+		position: relative;
+		border-style: solid;
+		border-color: rgb(255, 255, 255);
+		border-image: initial;
+		border-width: 0px 5px 5px 0px;
+		padding: 5px;
+	}
+
+	.custom-arrow-prev > i {
+		transform: rotate(135deg);
+		right: -4px;
+	}
+
+	.custom-arrow-next > i {
+		transform: rotate(-45deg);
+		left: -4px;
+	}
 
 </style>
