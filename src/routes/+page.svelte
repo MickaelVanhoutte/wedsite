@@ -1119,9 +1119,6 @@
 	.z-10 {
 		z-index: 10;
 	}
-	.left-1\/4 {
-		left: 25%;
-	}
 	.-bottom-10 {
 		bottom: -2.5rem;
 	}
@@ -1209,7 +1206,7 @@
 			justify-content: center;
 			width: 100%;
 		}
-
+		
 		.w-4 {
 			width: 0.5rem;
 		}
@@ -1219,6 +1216,10 @@
 
 		.w-1\/2 {
 			width: 100%;
+		}
+
+		.left-1\/4 {
+			left: 0;
 		}
 
 		.logo {
