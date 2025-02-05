@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Carousel from '$lib/node_module/Carousel.svelte';
+	import Carousel from 'svelte-carousel';
 	import welcome from '$lib/images/us-home.jpg';
 	import dance from '$lib/sound/dance.mp3';
 
