@@ -6,23 +6,23 @@
 	let carousel: Carousel;
 	let carousel2: Carousel;
 	function showPrevPage() {
-		carousel.goToPrev({ animated: true })
+		carousel.goToPrev({ animated: true });
 	}
 
 	function showNextPage() {
-		carousel.goToNext({ animated: true })
+		carousel.goToNext({ animated: true });
 	}
 
 	function showPrevPage2() {
-		carousel2.goToPrev({ animated: true })
+		carousel2.goToPrev({ animated: true });
 	}
 
 	function showNextPage2() {
-		carousel2.goToNext({ animated: true })
+		carousel2.goToNext({ animated: true });
 	}
 
-	let womenImg = [...Array(31).keys()].map(i => `/wedsite/src/lib/images/inspi/women/${i}.jpg`);
-	let menImg = [...Array(10).keys()].map(i => `/wedsite/src/lib/images/inspi/men/${i}.jpg`);
+	let womenImg = [...Array(31).keys()].map((i) => `/wedsite/src/lib/images/inspi/women/${i}.jpg`);
+	let menImg = [...Array(10).keys()].map((i) => `/wedsite/src/lib/images/inspi/men/${i}.jpg`);
 
 	let women = false;
 	let men = false;
@@ -32,23 +32,25 @@
 	<title>Math & Mika</title>
 	<meta name="description" content="Wedding site info" />
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
-
 
 <header class="header">
 	<div class="hero">
 		<img src={welcome} alt="Welcome" />
-		
 	</div>
 </header>
 
 <nav class="sticky navbar">
-	<div class="brand  display__logo">
-		<a href="#" class="nav__link"> <span class="logo">Mathilde & Mickaël ~ </span><bold>27/09/25</bold></a>
+	<div class="brand display__logo">
+		<a href="#" class="nav__link">
+			<span class="logo">Mathilde & Mickaël ~ </span><bold>27/09/25</bold></a
+		>
 	</div>
 
 	<input type="checkbox" id="nav" class="hidden" />
@@ -63,291 +65,333 @@
 	</div>
 </nav>
 
-
 <section class="section section--code">
 	<div class="container">
-
 		<div class="code" id="dress-code" style="background: #70162e;">
 			<h1>Le dress code: années 40 !</h1>
 			<p>
-				On vous rassure, notre mariage n’est pas un rassemblement historique ! On ne vous demande pas de courir les friperies afin de trouver le graal. 
+				On vous rassure, notre mariage n’est pas un rassemblement historique ! On ne vous demande
+				pas de courir les friperies afin de trouver le graal.
 			</p>
-			<p>
-				Toutefois, cela nous tient véritablement à cœur que chacun d’entre vous colle au thème. 
-			</p>
+			<p>Toutefois, cela nous tient véritablement à cœur que chacun d’entre vous colle au thème.</p>
 			<div class="_content" class:opened={women}>
+				<h3 style="font-weight: bold; color: white">Alors Mesdames, par où commencer ?</h3>
+				<p>
+					On parle tout de même de 10 ans de mode alors il n’y a pas qu’une seule réponse.
+					Logiquement vous trouverez chaussure à votre pied, ou plutôt, une tenue qui convient à
+					votre silhouette.
+				</p>
+				<p>
+					La guerre a nécessité l’adaptation des looks. Les tenues deviennent ainsi plus simples et
+					plus fonctionnelles. Les vestes comportent des épaules carrées et les jupes sont près du
+					corps, ce sont les fameuses jupes crayon ! Les tailleurs jupes sont alors très populaires.
+				</p>
+				<p>
+					Les robes chemisiers sont un indispensable de la décennie, marquant la taille grâce à une
+					ceinture. La robe Kitty Foyle est populaire : longueur au genou, base foncée, boutonnée et
+					col plus clair, contrasté.
+				</p>
+				<p>
+					Mais après la guerre, le glamour et la féminité ont fait leur grand retour ! A partir de
+					1947, Dior introduit l’épaule ronde.
+				</p>
+				<p>
+					Tailles ceintrées et jupes amples, on recherche la silhouette « sablier ». Couleurs vives
+					et motifs audacieux, tout est redevenu possible.
+				</p>
+				<p>
+					Les jupes plissées sont également dans le thème tout comme les « pantalons à la
+					française », aux jambes extra larges.
+				</p>
+				<p style="font-weight: bold">
+					Et si vous avez envie de vous la jouer star Hollywoodienne ?
+				</p>
+				<p>Dans ce cas, sortez vos gants de velours le satin et les paillettes !</p>
+				<p>
+					Plus sérieusement, les stars de la décennie sont Katharine Hepburn, Elizabeth Taylor,
+					 Rita Hayworth, Veronica Lake, Lauren Bacall et Ingrid Bergman.
+				</p>
+				<p>Les robes sont de style grec, princesse ou encore portefeuille.</p>
+				<h3 style="font-weight: bold; color: white">Comment on accessoirise ?</h3>
+				<p>
+					Chapeaux, turbans, écharpes, pinces à fleurs, bibi pour les cheveux . Ceintures épaisses à
+					grosse boucle pour la taille.
+				</p>
+				<p style="font-weight: bold">Trouver chaussure à son pied.</p>
+				<p>
+					Cela ne fera pas plaisir à toutes mais dans les années 1940 on porte des talons ! Alors
+					certes, de hauteur moyenne à basse, on cherche la praticité et la stabilité. Souvent en
+					cuir ou en daim, ce sont des escarpins à bout ronds ou carrés, des mocassins et des
+					chaussures à lacet. Les babies et les salomés sont également d’époque.
+				</p>
+				<h3 style="font-weight: bold; color: white">Et maintenant on cherche où ?</h3>
+				<p>Alors mes recommandations sont les suivantes :</p>
+				<ul style="color: white">
+					<li>
+						Top Vintage est le site de référence en tenues vintage. Vous pouvez même effectuer vos
+						recherches par décennie. Cela vous permettra d’identifier des marques qui vous plaisent
+						et de faire vos recherches sur Vinted si les prix sont trop élevés.
+					</li>
+					<li>
+						Ma marque chouchoute est Voodoo Vixen, mais vous pourrez trouver chez collectif,
+						Hellbunny, seamstress of bloomsburry, glamour bunny, et tant d’autres !
+					</li>
+					<li>
+						En toute honnêteté cette année vous pourrez également trouver sur des sites tels que
+						Cider.
+					</li>
+				</ul>
+				<p style="font-weight: bold">
+					Quoi qu’il arrive n’hésitez pas à m’envoyer ce que vous avez repéré !
+				</p>
 
-			
-			<h3 style="font-weight: bold; color: white">
-				Alors Mesdames, par où commencer ?
-			</h3>
-			<p>
-				On parle tout de même de 10 ans de mode alors il n’y a pas qu’une seule réponse. Logiquement vous trouverez chaussure à votre pied, ou plutôt, une tenue qui convient à votre silhouette. 
-			</p>
-			<p>
-				La guerre a nécessité l’adaptation des looks. Les tenues deviennent ainsi plus simples et plus fonctionnelles. Les vestes comportent des épaules carrées et les jupes sont près du corps, ce sont les fameuses jupes crayon ! Les tailleurs jupes sont alors très populaires.
-			</p>
-			<p>
-				Les robes chemisiers sont un indispensable de la décennie, marquant la taille grâce à une ceinture. La robe Kitty Foyle est populaire : longueur au genou, base foncée, boutonnée et col plus clair, contrasté.
-			</p>
-			<p>
-				Mais après la guerre, le glamour et la féminité ont fait leur grand retour ! A partir de 1947, Dior introduit l’épaule ronde.
-			</p>
-			<p>
-				Tailles ceintrées et jupes amples, on recherche la silhouette « sablier ». Couleurs vives et motifs audacieux, tout est redevenu possible.
-			</p>
-			<p>
-				Les jupes plissées sont également dans le thème tout comme les « pantalons à la française », aux jambes extra larges. 
-			</p>
-			<p style="font-weight: bold">
-				Et si vous avez envie de vous la jouer star Hollywoodienne ? 
-			</p>
-			<p>
-				Dans ce cas, sortez vos gants de velours le satin et les paillettes ! 
-			</p>
-			<p>
-				Plus sérieusement, les stars de la décennie sont Katharine Hepburn, Elizabeth Taylor,  Rita Hayworth, Veronica Lake, Lauren Bacall et Ingrid Bergman. 
-			</p>
-			<p>
-				Les robes sont de style grec, princesse ou encore portefeuille. 
-			</p>
-			<h3 style="font-weight: bold; color: white">
-				Comment on accessoirise ? 
-			</h3>
-			<p>
-				Chapeaux, turbans, écharpes, pinces à fleurs, bibi pour les cheveux . Ceintures épaisses à grosse boucle pour la taille. 
-			</p>
-			<p style="font-weight: bold">
-				Trouver chaussure à son pied. 
-			</p>
-			<p>
-				Cela ne fera pas plaisir à toutes mais dans les années 1940 on porte des talons ! Alors certes, de hauteur moyenne à basse, on cherche la praticité et la stabilité. Souvent en cuir ou en daim, ce sont des escarpins à bout ronds ou carrés, des mocassins et des chaussures à lacet. Les babies et les salomés sont également d’époque.
-			</p>
-			<h3 style="font-weight: bold; color: white">
-				Et maintenant on cherche où ?
-			</h3>
-			<p>
-				Alors mes recommandations sont les suivantes : 
-			</p>
-			<ul style="color: white">
-				<li>Top Vintage est le site de référence en tenues vintage. Vous pouvez même effectuer vos recherches par décennie. Cela vous permettra d’identifier des marques qui vous plaisent et de faire vos recherches sur Vinted si les prix sont trop élevés. </li>
-				<li>Ma marque chouchoute est Voodoo Vixen, mais vous pourrez trouver chez collectif, Hellbunny, seamstress of bloomsburry, glamour bunny, et tant d’autres ! </li>
-				<li>En toute honnêteté cette année vous pourrez également trouver sur des sites tels que Cider. </li>
-			</ul>
-			<p style="font-weight: bold">
-				Quoi qu’il arrive n’hésitez pas à m’envoyer ce que vous avez repéré !
-			</p>
-
-			<h3 style="font-weight: bold; color: white">
-				Inspirations
-			</h3>
-			<div class="carousel-wrapper">
-				<Carousel bind:this={carousel} let:loaded let:showPrevPage let:showNextPage style="width: 50%">
-					<div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev">
-						<i />
-					  </div>
-					{#each womenImg as src, imageIndex (src)}
-						<div class="img-container" style="display: flex; justify-content:center;">
-							{#if loaded.includes(imageIndex)}
-								<img style="height: 300px; width: auto" {src} alt="inspiration" />
-							{/if}
+				<h3 style="font-weight: bold; color: white">Inspirations</h3>
+				<div class="carousel-wrapper">
+					<Carousel
+						bind:this={carousel}
+						let:loaded
+						let:showPrevPage
+						let:showNextPage
+						style="width: 50%"
+					>
+						<div slot="prev" on:click={showPrevPage} class="custom-arrow custom-arrow-prev">
+							<i />
 						</div>
-					{/each}
-					<div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
-						<i />
-					  </div>
-				</Carousel>
-
-			</div>
-	
+						{#each womenImg as src, imageIndex (src)}
+							<div class="img-container" style="display: flex; justify-content:center;">
+								{#if loaded.includes(imageIndex)}
+									<img style="height: 300px; width: auto" {src} alt="inspiration" />
+								{/if}
+							</div>
+						{/each}
+						<div slot="next" on:click={showNextPage} class="custom-arrow custom-arrow-next">
+							<i />
+						</div>
+					</Carousel>
+				</div>
 			</div>
 			<div class="_content" class:opened={men}>
 				<h3 style="font-weight: bold; color: white">La mode masculine des années 40.</h3>
 
 				<p>
 					Ce qui rend la mode masculine des années 1940 unique à la décennie, c’est la coupe des
-				vêtements, les motifs et les détails stylistiques qui démontraient le soutien patriotique d’une
-				personne à son pays (ou son absence).
+					vêtements, les motifs et les détails stylistiques qui démontraient le soutien patriotique
+					d’une personne à son pays (ou son absence).
 				</p>
 				<p>
-					Certains des détails clés de la mode masculine des années 1940 sont des pantalons taille haute
-					et larges, des manteaux de costume à revers larges ,des chemises à col large, des cravates
-					colorées et larges, des chaussures oxford bicolores et des chapeaux fedora à large bord. 
-					Remarquez que la tendance était large ? Par rapport à la coupe skinny d’aujourd’hui, les années
-					1940 étaient axées sur le confort par le volume.
+					Certains des détails clés de la mode masculine des années 1940 sont des pantalons taille
+					haute et larges, des manteaux de costume à revers larges ,des chemises à col large, des
+					cravates colorées et larges, des chaussures oxford bicolores et des chapeaux fedora à
+					large bord.  Remarquez que la tendance était large ? Par rapport à la coupe skinny
+					d’aujourd’hui, les années 1940 étaient axées sur le confort par le volume.
 				</p>
 				<p>
-					La plupart des hommes ont conservé leurs vêtements des années 1930 et les ont portés jusqu’au
-					début des années 40. C’était un signe de soutien à la guerre que d’être vu dans les costumes et
-					les manteaux d’avant-guerre. Les chaussures ont été ressemelées et les chapeaux remodelés
-					aussi longtemps que possible. Les vêtements usagés ont été transmis à l’appartenance familiale
-					et transformés en looks. Les costumes étaient principalement vendus sans gilet.
-					La plus grande influence des restrictions de la Seconde Guerre mondiale sur la mode masculine
-					a été l’introduction de la décontraction. Les hommes étaient fatigués des uniformes et des
-					costumes confinés.
+					La plupart des hommes ont conservé leurs vêtements des années 1930 et les ont portés
+					jusqu’au début des années 40. C’était un signe de soutien à la guerre que d’être vu dans
+					les costumes et les manteaux d’avant-guerre. Les chaussures ont été ressemelées et les
+					chapeaux remodelés aussi longtemps que possible. Les vêtements usagés ont été transmis à
+					l’appartenance familiale et transformés en looks. Les costumes étaient principalement
+					vendus sans gilet. La plus grande influence des restrictions de la Seconde Guerre mondiale
+					sur la mode masculine a été l’introduction de la décontraction. Les hommes étaient
+					fatigués des uniformes et des costumes confinés.
 				</p>
-				
-			
+
 				<h3 style="font-weight: bold; color: white">LA MATIÈRE</h3>
-			<p>
-				Les costumes des hommes des années 1940 étaient généralement fabriqués à partir de laine
-				épaisse, de laine peignée ou de tweed, mais pendant la guerre, des tissus de rayonne
-				synthétique mélangés à de la laine étaient généralement utilisés à la place.
-			</p>
-		
+				<p>
+					Les costumes des hommes des années 1940 étaient généralement fabriqués à partir de laine
+					épaisse, de laine peignée ou de tweed, mais pendant la guerre, des tissus de rayonne
+					synthétique mélangés à de la laine étaient généralement utilisés à la place.
+				</p>
+
 				<h3 style="font-weight: bold; color: white">LA COULEUR</h3>
 				<p>
-				Les couleurs des costumes pour hommes des années 1940 étaient atténuées : noir, bleu
-				marine, gris, brun foncé, beige et bleu moyen. Pendant l’été, les couleurs de tissu plus claires
-				étaient le gris moyen, le brun, le bleu moyen, le bleu-vert sarcelle et le beige. Le blanc et l’ivoire,
-				qui avaient été incroyablement populaires dans les années 1930, se sont lentement estompés,
-				n’étant portés que dans les climats tropicaux chauds.
-			</p>
+					Les couleurs des costumes pour hommes des années 1940 étaient atténuées : noir, bleu
+					marine, gris, brun foncé, beige et bleu moyen. Pendant l’été, les couleurs de tissu plus
+					claires étaient le gris moyen, le brun, le bleu moyen, le bleu-vert sarcelle et le beige.
+					Le blanc et l’ivoire, qui avaient été incroyablement populaires dans les années 1930, se
+					sont lentement estompés, n’étant portés que dans les climats tropicaux chauds.
+				</p>
 				<p>
-				La plupart des costumes pour hommes des années 40 n’étaient pas de couleurs unies. Le tweed,
-				les chevrons, les carreaux, les rayures et les surplaids étaient des motifs de costume très
-				populaires. Les larges rayures craie étaient également un motif de costume classique des
-				années 40.
-			</p>
+					La plupart des costumes pour hommes des années 40 n’étaient pas de couleurs unies. Le
+					tweed, les chevrons, les carreaux, les rayures et les surplaids étaient des motifs de
+					costume très populaires. Les larges rayures craie étaient également un motif de costume
+					classique des années 40.
+				</p>
 				<h3 style="font-weight: bold; color: white">LA VESTE</h3>
-				<p>La veste à simple boutonnage avait 2-3 boutons, de larges épaules rembourrées, des poches
-				plaquées ou fendues et légèrement effilée à la taille. Les revers étaient larges, crantés ou en
-				pointe avec des bords arrondis. La grande largeur faisait paraître un homme plus grand, même si
-				la coupe était plus étroite que dans les années 30.
-			</p>
-			<p>
-				La veste à double boutonnage était encore plus populaire dans les années 1940 en raison de
-				la largeur supplémentaire qu’elle provoquait, bien que les ventes aient été limitées pendant les
-				années de guerre.
-			</p>
+				<p>
+					La veste à simple boutonnage avait 2-3 boutons, de larges épaules rembourrées, des poches
+					plaquées ou fendues et légèrement effilée à la taille. Les revers étaient larges, crantés
+					ou en pointe avec des bords arrondis. La grande largeur faisait paraître un homme plus
+					grand, même si la coupe était plus étroite que dans les années 30.
+				</p>
+				<p>
+					La veste à double boutonnage était encore plus populaire dans les années 1940 en raison de
+					la largeur supplémentaire qu’elle provoquait, bien que les ventes aient été limitées
+					pendant les années de guerre.
+				</p>
 				<h3 style="font-weight: bold; color: white">LE GILET</h3>
-				<p>Les gilets de costume pour hommes des années 1940 étaient considérés comme un gaspillage à
-				la fois en temps de guerre et après, et la plupart des hommes préféraient ne pas porter de gilet
-				du tout avec leurs costumes. C’était plus frais et plus confortable sans eux.
-				Les gilets de costume assortis étaient coupés à col en V avec 7 à 6 boutons et des poches de
-				chaque côté.
-			</p>
+				<p>
+					Les gilets de costume pour hommes des années 1940 étaient considérés comme un gaspillage à
+					la fois en temps de guerre et après, et la plupart des hommes préféraient ne pas porter de
+					gilet du tout avec leurs costumes. C’était plus frais et plus confortable sans eux. Les
+					gilets de costume assortis étaient coupés à col en V avec 7 à 6 boutons et des poches de
+					chaque côté.
+				</p>
 				<h3 style="font-weight: bold; color: white">LE PANTALON</h3>
-				<p>Les pantalons de costume, les pantalons ou les pantalons des années 1940 étaient
-				généralement plats ou à plis simples. Ils étaient portés à la taille haute (au-dessus du nombril)
-				avec une bande de taille de 7.5cm de large.
-			</p>
-			<p>
-				Les jambes du pantalon étaient larges autour de la cuisse, du genou et de la cheville
-				légèrement fuselée, ce qui est à l’opposé des costumes « skinny » d’aujourd’hui.
-				Les pantalons larges et taille haute sont difficiles à trouver dans les magasins aujourd’hui (bien
-				que cela change lentement.
-			</p>
+				<p>
+					Les pantalons de costume, les pantalons ou les pantalons des années 1940 étaient
+					généralement plats ou à plis simples. Ils étaient portés à la taille haute (au-dessus du
+					nombril) avec une bande de taille de 7.5cm de large.
+				</p>
+				<p>
+					Les jambes du pantalon étaient larges autour de la cuisse, du genou et de la cheville
+					légèrement fuselée, ce qui est à l’opposé des costumes « skinny » d’aujourd’hui. Les
+					pantalons larges et taille haute sont difficiles à trouver dans les magasins aujourd’hui
+					(bien que cela change lentement.
+				</p>
 				<h3 style="font-weight: bold; color: white">LA CHEMISE</h3>
-				<p>Les chemises habillées des hommes des années 1940 étaient généralement fabriquées en
-				coton avec un grand col pointu attaché appelé col pointe de lance au début des années
-				1940 et un col classique plus court à la fin des années 1940. Les colliers modernes
-				d’aujourd’hui sont beaucoup plus petits.
-			</p><p>
-				Les chemises pour hommes des années 1940 étaient très colorées. Le blanc était une option,
-				mais les hommes choisissaient des chemises bleues, beiges, jaunes, vertes ou grises à rayures
-				fines ou à pois.
-				La chemise était portée rentrée, avec une poche unique facultative sur la poitrine.
-			</p>
+				<p>
+					Les chemises habillées des hommes des années 1940 étaient généralement fabriquées en coton
+					avec un grand col pointu attaché appelé col pointe de lance au début des années 1940 et un
+					col classique plus court à la fin des années 1940. Les colliers modernes d’aujourd’hui
+					sont beaucoup plus petits.
+				</p>
+				<p>
+					Les chemises pour hommes des années 1940 étaient très colorées. Le blanc était une option,
+					mais les hommes choisissaient des chemises bleues, beiges, jaunes, vertes ou grises à
+					rayures fines ou à pois. La chemise était portée rentrée, avec une poche unique
+					facultative sur la poitrine.
+				</p>
 				<h3 style="font-weight: bold; color: white">LES ACCESSOIRES</h3>
 				<p>
-				Les bretelles étaient encore portées par les hommes dans les années 1940, bien que les
-				ceintures soient plus populaires.
-				Les bretelles pour hommes des années 1940 étaient dotées d’épaisses bandes élastiques
-				avec des boucles de boutonnage. Des boutons ont été cousus à l’intérieur de la ceinture pour
-				attacher également des bretelles. Les bretelles étaient rarement visibles, portées sous un gilet de
-				costume ou un gilet ou cachées derrière le costume ou le manteau. 
-			</p>
-			<p>
-				Les ceintures pour hommes des années 1940 mesuraient environ 2.5cm de large avec de
-				petites boucles métalliques souvent recouvertes de cuir assorti. Le cuir de la ceinture était beige,
-				marron ou noir et pouvait être uni ou grainé, tressé ou estampillé d’un motif western.
-			</p>
-			<p>
-				Aucun costume d’homme des années 1940 ne serait complet sans la cravate parfaite ! Les
-				cravates des années 1940 étaient fabriquées exclusivement à partir de soie, de rayonne et de
-				laine. Les grandes lignes géométriques, les lignes bouclées, les monogrammes et le style Art
-				déco ont été réalisés dans des couleurs patriotiques vives. Animaux, plantes, fleurs, oiseaux,
-				westerns et tropicaux étaient partout.
-			</p>
-			<p>
-				Aucun costume des années 1940 ne serait complet sans un mouchoir de poche. Ceux-ci ont
-				été fabriqués à partir de rayonne ou de soie après la guerre et étaient souvent de couleurs vives,
-				ou ils avaient des motifs cachemire ou d’autres motifs classiques. Les mouchoirs de poche des
-				hommes des années 1940 étaient pliés en triangle et placés côté ouvert vers le haut, exposant
-				deux ou trois pointes.
-			</p>
+					Les bretelles étaient encore portées par les hommes dans les années 1940, bien que les
+					ceintures soient plus populaires. Les bretelles pour hommes des années 1940 étaient dotées
+					d’épaisses bandes élastiques avec des boucles de boutonnage. Des boutons ont été cousus à
+					l’intérieur de la ceinture pour attacher également des bretelles. Les bretelles étaient
+					rarement visibles, portées sous un gilet de costume ou un gilet ou cachées derrière le
+					costume ou le manteau.
+				</p>
+				<p>
+					Les ceintures pour hommes des années 1940 mesuraient environ 2.5cm de large avec de
+					petites boucles métalliques souvent recouvertes de cuir assorti. Le cuir de la ceinture
+					était beige, marron ou noir et pouvait être uni ou grainé, tressé ou estampillé d’un motif
+					western.
+				</p>
+				<p>
+					Aucun costume d’homme des années 1940 ne serait complet sans la cravate parfaite ! Les
+					cravates des années 1940 étaient fabriquées exclusivement à partir de soie, de rayonne et
+					de laine. Les grandes lignes géométriques, les lignes bouclées, les monogrammes et le
+					style Art déco ont été réalisés dans des couleurs patriotiques vives. Animaux, plantes,
+					fleurs, oiseaux, westerns et tropicaux étaient partout.
+				</p>
+				<p>
+					Aucun costume des années 1940 ne serait complet sans un mouchoir de poche. Ceux-ci ont été
+					fabriqués à partir de rayonne ou de soie après la guerre et étaient souvent de couleurs
+					vives, ou ils avaient des motifs cachemire ou d’autres motifs classiques. Les mouchoirs de
+					poche des hommes des années 1940 étaient pliés en triangle et placés côté ouvert vers le
+					haut, exposant deux ou trois pointes.
+				</p>
 
-			<h3 style="font-weight: bold; color: white">
-				Inspirations
-			</h3>
-			<div class="carousel-wrapper">
-				<Carousel bind:this={carousel2} let:loaded let:showPrevPage2 let:showNextPage2 style="width: 50%">
-					<div slot="prev" on:click={showPrevPage2} class="custom-arrow custom-arrow-prev">
-						<i />
-					  </div>
-					{#each menImg as src, imageIndex (src)}
-						<div class="img-container" style="display: flex; justify-content:center;">
-							{#if loaded.includes(imageIndex)}
-								<img style="height: 300px; width: auto" {src} alt="inspiration" />
-							{/if}
+				<h3 style="font-weight: bold; color: white">Inspirations</h3>
+				<div class="carousel-wrapper">
+					<Carousel
+						bind:this={carousel2}
+						let:loaded
+						let:showPrevPage2
+						let:showNextPage2
+						style="width: 50%"
+					>
+						<div slot="prev" on:click={showPrevPage2} class="custom-arrow custom-arrow-prev">
+							<i />
 						</div>
-					{/each}
-					<div slot="next" on:click={showNextPage2} class="custom-arrow custom-arrow-next">
-						<i />
-					  </div>
-				</Carousel>
-
-			</div>
-
+						{#each menImg as src, imageIndex (src)}
+							<div class="img-container" style="display: flex; justify-content:center;">
+								{#if loaded.includes(imageIndex)}
+									<img style="height: 300px; width: auto" {src} alt="inspiration" />
+								{/if}
+							</div>
+						{/each}
+						<div slot="next" on:click={showNextPage2} class="custom-arrow custom-arrow-next">
+							<i />
+						</div>
+					</Carousel>
+				</div>
 			</div>
 			<div class="_footer">
-				<button class="link" on:click="{() => { men = false; women = !women;}}">{women ? 'Voir moins' : 'Mesdames'}</button>
-				<button class="link" on:click="{() => { women = false; men = !men;}}">{men ? 'Voir moins' : 'Messieurs'}</button>
+				<button
+					class="link"
+					on:click={() => {
+						men = false;
+						women = !women;
+					}}>{women ? 'Voir moins' : 'Mesdames'}</button
+				>
+				<button
+					class="link"
+					on:click={() => {
+						women = false;
+						men = !men;
+					}}>{men ? 'Voir moins' : 'Messieurs'}</button
+				>
 			</div>
 		</div>
 
 		<div class="code" id="mairie" style="background: #70162e;">
 			<h1>Mairie, 13h30</h1>
 			<p>Mairie de Douai 83 Rue de la Mairie, 59500 Douai</p>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.9390057587643!2d3.0805721999999998!3d50.367691799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2c967c812a74f%3A0x3955107e8d5a47a2!2sMairie%20de%20Douai!5e0!3m2!1sfr!2sfr!4v1727466178463!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2544.9390057587643!2d3.0805721999999998!3d50.367691799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2c967c812a74f%3A0x3955107e8d5a47a2!2sMairie%20de%20Douai!5e0!3m2!1sfr!2sfr!4v1727466178463!5m2!1sfr!2sfr"
+				width="100%"
+				height="450"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
 		</div>
 
 		<div class="code" id="vin" style="background: #70162e;">
 			<h1>Vin d'honneur, 16h</h1>
 			<p>La Belle Grange 751 Bernstraete, 59270 Bailleul</p>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.78350911202!2d2.6827663767118977!3d50.705401868973794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dcdf7f7fea7c77%3A0xa722ce9ba7ca02f9!2sLa%20Belle%20Grange!5e0!3m2!1sfr!2sfr!4v1727466332357!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.78350911202!2d2.6827663767118977!3d50.705401868973794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dcdf7f7fea7c77%3A0xa722ce9ba7ca02f9!2sLa%20Belle%20Grange!5e0!3m2!1sfr!2sfr!4v1727466332357!5m2!1sfr!2sfr"
+				width="100%"
+				height="450"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
 		</div>
-	
-		<div class="code" id="musique"  style="background: #70162e;">
+
+		<div class="code" id="musique" style="background: #70162e;">
 			<h1>Envie de musique ?</h1>
 			<p>Nous ne prendrons probablement pas en compte toutes vos demandes, mais qui sait ?</p>
 			<form action="mailto:vzwed2025@gmail.com" method="post" enctype="text/plain">
-		
-				<textarea name="tracks" style="width: 100%; height: 160px" 
-				placeholder="{'artiste:titre\nartiste:titre\n...'}"></textarea><br>
-				
+				<textarea
+					name="tracks"
+					style="width: 100%; height: 160px"
+					placeholder={'artiste:titre\nartiste:titre\n...'}
+				></textarea><br />
+
 				<div style="display: flex; justify-content: flex-end;">
-				<input type="submit" value="Send">
-			</div>
+					<input type="submit" value="Send" />
+				</div>
 			</form>
 		</div>
-
 	</div>
 </section>
 
 <audio id="musicplayer" autoplay style="visibility: hidden;">
-	<source src="{dance}" />
+	<source src={dance} />
 </audio>
 
 <style lang="scss">
-
 	* {
-		font-family: "Roboto", serif;
+		font-family: 'Roboto', serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
 		font-style: normal;
-		font-variation-settings: "wdth" 100;
+		font-variation-settings: 'wdth' 100;
 		--sc-color-rgb-light: rgb(255, 255, 255);
 	}
 
@@ -357,7 +401,7 @@
 		width: 50%;
 		margin: auto;
 	}
-	
+
 	.hero {
 		display: flex;
 		flex-direction: row;
@@ -376,7 +420,7 @@
 		font-size: 4rem;
 		margin-top: -10rem;
 		h1 {
-			font-family: "Playwrite VN", serif !important;
+			font-family: 'Playwrite VN', serif !important;
 			font-optical-sizing: auto;
 			font-weight: 400;
 			font-style: normal;
@@ -385,7 +429,8 @@
 		}
 	}
 
-	.backgrounds, .background {
+	.backgrounds,
+	.background {
 		width: 100%;
 		height: 100%;
 		position: fixed;
@@ -405,28 +450,26 @@
 			opacity: 0.5;
 		}
 	}
-	
+
 	.code {
-	
 		padding: 2rem;
 		box-sizing: border-box;
 		font-size: 1.2rem;
 
 		h1 {
-			font-family: "Playwrite VN", serif !important;
+			font-family: 'Playwrite VN', serif !important;
 			font-optical-sizing: auto;
 			font-weight: 400;
 			font-style: normal;
 		}
 
-		._content:not(.opened){
+		._content:not(.opened) {
 			overflow: hidden;
 			max-height: 0;
 			transition: max-height 0.2s ease-out;
 			text-overflow: ellipsis;
-		
 		}
-		
+
 		._footer {
 			display: flex;
 			justify-content: center;
@@ -443,12 +486,13 @@
 			}
 		}
 
-		button:not(.link), input {
+		button:not(.link),
+		input {
 			background-color: var(--primary);
 			border-radius: 8px;
 			border-style: none;
 			box-sizing: border-box;
-			color: #FFFFFF;
+			color: #ffffff;
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1rem;
@@ -472,7 +516,7 @@
 
 		button:hover,
 		button:focus {
-			background-color: #F082AC;
+			background-color: #f082ac;
 		}
 	}
 
@@ -490,13 +534,13 @@
 		flex: 0.6;
 	}
 
-	h1, p {
+	h1,
+	p {
 		width: 100%;
 		color: white;
 	}
 
 	@media screen and (max-width: 768px) {
-
 		.header {
 			height: unset !important;
 		}
@@ -529,13 +573,10 @@
 		}
 	}
 
-
-
-
 	:root {
-		--primary: rgba(37, 37, 37, 1.0);
-		--secondary: rgba(252, 41, 74, 1.0);
-		--shades: rgba(238, 238, 238, 1.0);
+		--primary: rgba(37, 37, 37, 1);
+		--secondary: rgba(252, 41, 74, 1);
+		--shades: rgba(238, 238, 238, 1);
 	}
 
 	* {
@@ -601,12 +642,12 @@
 	}
 
 	.navbar {
-		padding-top: .5em;
-		padding-bottom: .5em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
 		background-color: var(--primary);
-		-webkit-box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
-		-moz-box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
-		box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
+		-webkit-box-shadow: 0 14px 14px -14px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 0 14px 14px -14px rgba(0, 0, 0, 0.75);
+		box-shadow: 0 14px 14px -14px rgba(0, 0, 0, 0.75);
 	}
 
 	.sticky {
@@ -622,7 +663,7 @@
 
 	.display__logo {
 		font-size: 2.5rem;
-		margin-bottom: .5rem;
+		margin-bottom: 0.5rem;
 		font-family: inherit;
 		font-weight: 500;
 		line-height: 1.2;
@@ -653,8 +694,8 @@
 
 	.logo {
 		display: inline-block;
-		padding-top: .3125rem;
-		padding-bottom: .3125rem;
+		padding-top: 0.3125rem;
+		padding-bottom: 0.3125rem;
 		margin-right: 1rem;
 		line-height: inherit;
 	}
@@ -668,7 +709,6 @@
 
 	.nav__items {
 		margin-top: 5px;
-
 	}
 
 	.brand .nav__link,
@@ -688,7 +728,6 @@
 	}
 
 	@media (min-width: 800px) {
-
 		.navbar,
 		.nav__items {
 			display: flex;
@@ -709,7 +748,7 @@
 		.carousel-wrapper {
 			display: flex;
 			justify-content: center;
-			width: 100%
+			width: 100%;
 		}
 		.logo {
 			display: none;
@@ -809,46 +848,43 @@
 		.nav__open i:nth-child(3) {
 			margin-top: 4px;
 		}
-
 	}
 
-
-	#nav:checked+.nav__open {
+	#nav:checked + .nav__open {
 		transform: rotate(45deg);
 	}
 
-	#nav:checked+.nav__open i {
+	#nav:checked + .nav__open i {
 		background-color: var(--shades);
 		transition: transform 0.2s ease;
 	}
 
-	#nav:checked+.nav__open i:nth-child(1) {
+	#nav:checked + .nav__open i:nth-child(1) {
 		transform: translateY(6px) rotate(180deg);
 	}
 
-	#nav:checked+.nav__open i:nth-child(2) {
+	#nav:checked + .nav__open i:nth-child(2) {
 		opacity: 0;
 	}
 
-	#nav:checked~.nav__item a {
+	#nav:checked ~ .nav__item a {
 		display: block !important;
 	}
 
-	#nav:checked+.nav__open i:nth-child(3) {
+	#nav:checked + .nav__open i:nth-child(3) {
 		transform: translateY(-6px) rotate(90deg);
 	}
 
-	#nav:checked~.nav {
+	#nav:checked ~ .nav {
 		z-index: 9990;
 		opacity: 1;
 		left: 0;
 	}
 
-	#nav:checked~.nav ul li a {
+	#nav:checked ~ .nav ul li a {
 		opacity: 1;
 		transform: translateY(0);
 	}
-		
 
 	.custom-arrow {
 		width: 40px;
@@ -865,7 +901,7 @@
 		-webkit-tap-highlight-color: transparent;
 		transition: opacity 150ms;
 	}
-	
+
 	.custom-arrow-prev {
 		left: 0px;
 	}
@@ -892,5 +928,4 @@
 		transform: rotate(-45deg);
 		left: -4px;
 	}
-
 </style>

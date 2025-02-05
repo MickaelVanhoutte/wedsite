@@ -5,7 +5,7 @@
 	import 'aos/dist/aos.css';
 	export const prerender = true;
 
-  	onMount(() => {
+	onMount(() => {
 		Aos.init();
 	});
 </script>
@@ -30,7 +30,6 @@
 	}
 
 	main {
-		
 	}
 
 	footer {
