@@ -649,7 +649,7 @@
 		<div class="code" id="musique" style="background: #70162e;">
 			<h1>Let's danse ?</h1>
 			<p>Apprenez quelques choré et dansez avec nous !</p>
-
+			<p style="font-style: italic;font-size: .7rem;">Désolé, ma future femme a de drôles de délires 🩵</p>
 			<Carousel
 						style="height:100%"
 						containerClass={'px-10'}
