@@ -3,6 +3,8 @@
 	import welcome from '$lib/images/us-home.jpg';
 	import dance from '$lib/sound/dance.mp3';
 
+	let dressCode: HTMLDivElement;
+	let navOpen: HTMLInputElement;
 	let fullPic: HTMLDivElement;
 	let womenImg: string[] = [];
 	let menImg: string[] = [];
@@ -47,99 +49,133 @@
 		>
 	</div>
 
-	<input type="checkbox" id="nav" class="hidden" />
+	<input type="checkbox" id="nav" bind:this={navOpen} class="hidden" />
 	<label for="nav" class="nav__open"><i></i><i></i><i></i></label>
 	<div class="nav">
 		<ul class="nav__items">
-			<li class="nav__item"><a href="#dress-code" class="nav__link">Dress code</a></li>
-			<li class="nav__item"><a href="#mairie" class="nav__link">Mairie</a></li>
-			<li class="nav__item"><a href="#vin" class="nav__link">Vin d'honneur</a></li>
-			<li class="nav__item"><a href="#musique" class="nav__link">Musique ?</a></li>
+			<li class="nav__item">
+				<a href="#dress-code" class="nav__link" on:click={() => (navOpen.checked = false)}
+					>Dress code</a
+				>
+			</li>
+			<li class="nav__item">
+				<a href="#mairie" class="nav__link" on:click={() => (navOpen.checked = false)}>Mairie</a>
+			</li>
+			<li class="nav__item">
+				<a href="#vin" class="nav__link" on:click={() => (navOpen.checked = false)}>Vin d'honneur</a
+				>
+			</li>
+			<li class="nav__item">
+				<a href="#musique" class="nav__link" on:click={() => (navOpen.checked = false)}>Musique ?</a
+				>
+			</li>
 		</ul>
 	</div>
 </nav>
 
 <section class="section section--code">
 	<div class="container">
-		<div class="code" id="dress-code" style="background: #70162e;">
-			<h1>Le dress code: années 40 !</h1>
-			<p>
+		<div class="code" id="dress-code" style="background: #70162e;" bind:this={dressCode}>
+			<h1 style="text-align: center">Le dress code: années 40 !</h1>
+			<p style="text-align: center">
 				On vous rassure, notre mariage n’est pas un rassemblement historique ! On ne vous demande
 				pas de courir les friperies afin de trouver le graal.
 			</p>
-			<p>Toutefois, cela nous tient véritablement à cœur que chacun d’entre vous colle au thème.</p>
-			<div class="_content" class:opened={women}>
-				<h3 style="font-weight: bold; color: white">Alors Mesdames, par où commencer ?</h3>
+			<p style="text-align: center">
+				Toutefois, cela nous tient véritablement à cœur que chacun d’entre vous colle au thème.
+			</p>
+			<div class="_content" class:opened={women} id="women-content">
+				<h3
+					class="classy"
+					id="robes-et-jupes"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Robes et jupes
+				</h3>
 				<p>
-					On parle tout de même de 10 ans de mode alors il n’y a pas qu’une seule réponse.
-					Logiquement vous trouverez chaussure à votre pied, ou plutôt, une tenue qui convient à
-					votre silhouette.
-				</p>
-				<p>
-					La guerre a nécessité l’adaptation des looks. Les tenues deviennent ainsi plus simples et
-					plus fonctionnelles. Les vestes comportent des épaules carrées et les jupes sont près du
-					corps, ce sont les fameuses jupes crayon ! Les tailleurs jupes sont alors très populaires.
-				</p>
-				<p>
-					Les robes chemisiers sont un indispensable de la décennie, marquant la taille grâce à une
-					ceinture. La robe Kitty Foyle est populaire : longueur au genou, base foncée, boutonnée et
-					col plus clair, contrasté.
-				</p>
-				<p>
-					Mais après la guerre, le glamour et la féminité ont fait leur grand retour ! A partir de
-					1947, Dior introduit l’épaule ronde.
+					Les robes des années 40 sont pensées pour mettre en avant la silhouette féminine. Cintrées
+					à la taille et souvent accompagnées d’une ceinture, elles s’arrêtent sous le genou. Les
+					jupes peuvent être évasées ou droites, ce sont les fameuses jupes crayons ! Les tailleurs
+					jupes sont alors très populaires.
 				</p>
 				<p>
-					Tailles ceintrées et jupes amples, on recherche la silhouette « sablier ». Couleurs vives
-					et motifs audacieux, tout est redevenu possible.
+					Avec la guerre, les tenues deviennent plus fonctionnelles. Les vestes arborent des épaules
+					carrées, et les jupes crayons, près du corps, gagnent en popularité. La robe chemisier est
+					un indispensable, marquant la taille grâce à une ceinture. La robe Kitty Foyle est
+					populaire : longueur au genou, base foncée, boutonnée et col plus clair, contrasté. Les
+					jupes plissées sont également populaires.
 				</p>
 				<p>
-					Les jupes plissées sont également dans le thème tout comme les « pantalons à la
-					française », aux jambes extra larges.
+					Après la guerre, le glamour revient en force avec des tailles cintrées et des jupes
+					amples, donnant naissance à la silhouette sablier. Dior introduit les épaules rondes.
+					Inspirée d&#39;Hollywood, la mode adopte des matières élégantes comme le velours, le satin
+					et même des touches de paillettes. Couleurs vives et motifs audacieux, tout est redevenu
+					possible.
 				</p>
-				<p style="font-weight: bold">
-					Et si vous avez envie de vous la jouer star Hollywoodienne ?
-				</p>
-				<p>Dans ce cas, sortez vos gants de velours le satin et les paillettes !</p>
+				<h3
+					class="classy"
+					id="hauts-et-vestes"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Hauts et vestes
+				</h3>
 				<p>
-					Plus sérieusement, les stars de la décennie sont Katharine Hepburn, Elizabeth Taylor,
-					 Rita Hayworth, Veronica Lake, Lauren Bacall et Ingrid Bergman.
+					Les blouses à boutons ou à col lavallière sont incontournables pour compléter une tenue
+					élégante. Elles se marient parfaitement avec des vestes cintrées qui structurent la
+					silhouette. Les cardigans courts et boléros apportent une touche raffinée et restent très
+					populaires.
 				</p>
-				<p>Les robes sont de style grec, princesse ou encore portefeuille.</p>
-				<h3 style="font-weight: bold; color: white">Comment on accessoirise ?</h3>
+				<h3
+					class="classy"
+					id="pantalons"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Pantalons
+				</h3>
 				<p>
-					Chapeaux, turbans, écharpes, pinces à fleurs, bibi pour les cheveux . Ceintures épaisses à
-					grosse boucle pour la taille.
+					Si les robes et jupes dominent, certaines femmes adoptent le pantalon large à taille
+					haute, inspiré du vestiaire masculin. Les &quot;pantalons à la française&quot;, aux jambes
+					extra larges, font leur apparition, offrant une alternative élégante et confortable.
 				</p>
-				<p style="font-weight: bold">Trouver chaussure à son pied.</p>
+				<p>Et si vous avez envie de vous la jouer star Hollywoodienne ?</p>
 				<p>
-					Cela ne fera pas plaisir à toutes mais dans les années 1940 on porte des talons ! Alors
-					certes, de hauteur moyenne à basse, on cherche la praticité et la stabilité. Souvent en
-					cuir ou en daim, ce sont des escarpins à bout ronds ou carrés, des mocassins et des
-					chaussures à lacet. Les babies et les salomés sont également d’époque.
+					Dans ce cas, sortez vos gants de velours, le satin et les paillettes ! Les stars de la
+					décennie sont Katharine Hepburn, Elizabeth Taylor, Rita Hayworth, Veronica Lake, Lauren
+					Bacall et Ingrid Bergman. Les robes sont de style grec, princesse ou encore portefeuille.
 				</p>
-				<h3 style="font-weight: bold; color: white">Et maintenant on cherche où ?</h3>
-				<p>Alors mes recommandations sont les suivantes :</p>
-				<ul style="color: white">
-					<li>
-						Top Vintage est le site de référence en tenues vintage. Vous pouvez même effectuer vos
-						recherches par décennie. Cela vous permettra d’identifier des marques qui vous plaisent
-						et de faire vos recherches sur Vinted si les prix sont trop élevés.
-					</li>
-					<li>
-						Ma marque chouchoute est Voodoo Vixen, mais vous pourrez trouver chez collectif,
-						Hellbunny, seamstress of bloomsburry, glamour bunny, et tant d’autres !
-					</li>
-					<li>
-						En toute honnêteté cette année vous pourrez également trouver sur des sites tels que
-						Cider.
-					</li>
-				</ul>
-				<p style="font-weight: bold">
-					Quoi qu’il arrive n’hésitez pas à m’envoyer ce que vous avez repéré !
+				<h3
+					class="classy"
+					id="accessoires"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Accessoires
+				</h3>
+				<p>
+					Les accessoires sont indispensables pour peaufiner le style. Les chapeaux comme les
+					bérets, bibis ou turbans noués ajoutent une touche chic.
+				</p>
+				<p>
+					Les gants en cuir ou en dentelle renforcent l’élégance, tout comme les bas à couture
+					apparente. Pour les bijoux, on privilégie la sobriété avec des perles, des broches et des
+					clips d’oreille. Les ceintures épaisses à grosse boucle marquent la taille avec style.
+				</p>
+				<p>Quant aux sacs, les modèles rigides ou les pochettes sont à privilégier.</p>
+				<h3
+					class="classy"
+					id="chaussures"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Chaussures
+				</h3>
+				<p>
+					Les escarpins à talon épais, les sandales compensées et les richelieus féminins restent
+					des valeurs sûres. On voit aussi des babies et des salomés, souvent en cuir ou en daim,
+					offrant praticité et stabilité.
 				</p>
 
-				<h3 style="font-weight: bold; color: white">Inspirations</h3>
+				<h3 class="classy" style="font-weight: bold; color: white; text-align:center;">
+					Inspirations
+				</h3>
 				<div class="carousel-wrapper">
 					<Carousel
 						style="height:100%"
@@ -177,131 +213,277 @@
 						</div>
 					</Carousel>
 				</div>
+
+				<h3 class="classy" style="font-weight: bold; color: white; text-align:center;">
+					Où acheter ?
+				</h3>
+
+				<h4 style="font-weight: bold; color: white;">Vêtements</h4>
+				<ul>
+					<li>
+						<a href="https://topvintage.fr/fr/robes-grandes-taillese/annees-1940"
+							>Robes grandes tailles années 40 | Je shoppe chez Topvintage</a
+						>
+					</li>
+					<li>
+						<a href="https://ellerebel.com/">Elle Rebel | Alternative Design House – ElleRebel</a>
+					</li>
+					<li><a href="https://poopidoo.be/fr/">PooPiDoo – Webshop</a></li>
+					<li>
+						<a href="https://www.rocknromancevintage.com/"
+							>RocknRomance Vintage, True &amp; Authentic 1940s &amp; 1950s Styled Clothing – Rock n
+							Romance</a
+						>
+					</li>
+					<li>
+						<a href="https://www.michelinepitt.com/">Micheline Pitt – Vixen by Micheline Pitt</a>
+					</li>
+					<li>
+						<a href="https://ladysplendorclothing.com/"
+							>Lady Splendor Clothing – LadySplendorClothing</a
+						>
+					</li>
+					<li>
+						<a href="https://www.missbamboo.co.uk/"
+							>1940s &amp; 50s reproduction vintage clothing - missbamboo.co.uk</a
+						>
+					</li>
+					<li>
+						<a href="https://heartmycloset.me/"
+							>Kate middleton dress, Swing Dresses - Vintage pencil 1950s Dresses – heartmycloset</a
+						>
+					</li>
+					<li>
+						<a href="https://www.heyday.co.uk/collections/all">Products – Heyday Vintage Style</a>
+					</li>
+					<li>
+						<a
+							href="https://www.unique-vintage.com/?ir_clickid=0QjRIUXTpxyKWKgQHx1AbSRGUks2CdVHSy750c0&amp;ir_cid=834&amp;ir_affid=39177&amp;utm_campaign=TEXT_LINK&amp;utm_medium=Vintage%20Dancer&amp;utm_source=ImpactRadius"
+							>Vintage Clothing &amp; Dresses – Retro Clothing Styles | Unique Vintage</a
+						>
+					</li>
+					<li>
+						<a href="https://www.karinadresses.com/collections/wedding-guest-dresses"
+							>Wedding Guest Dresses – karina dresses</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://www.etsy.com/shop/SwingbirdFashions?fbclid=IwAR0OyXrluP-oVdljvarFfmwbP41brKCnZ8R7b5zlFhTy3utvfRKY5XQe5OQ&amp;source=aw&amp;utm_source=affiliate_window&amp;utm_medium=affiliate&amp;utm_campaign=us_location_buyer&amp;utm_content=143113&amp;utm_term=0&amp;sv1=affiliate&amp;sv_campaign_id=143113&amp;awc=6220_1738665167_ee7804e893655139fb64c15debd94e53"
+							>SwingbirdFashions - Etsy France</a
+						>
+					</li>
+					<li>
+						<a href="https://trashydiva.com/search?q=1940s&amp;type=product"
+							>Search: 107 results found for &quot;1940s&quot;</a
+						>
+					</li>
+					<li>
+						<a href="https://modcloth.com/collections/special-occasion-dresses"
+							>Special Occasion Dresses | ModCloth</a
+						>
+					</li>
+					<li>
+						<a href="https://deadlyisthefemale.com/"
+							>Deadly Is The Female | Vintage Style Dresses, footwear and accessories</a
+						>
+					</li>
+					<li>
+						<a href="https://www.weekenddoll.co.uk/collections/1940s-fashion"
+							>Vintage Dresses, Blouses, Tops and Skirts - 1940s | Weekend Doll</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://www.etsy.com/shop/missfortuneuk?source=aw&amp;utm_source=affiliate_window&amp;utm_medium=affiliate&amp;utm_campaign=us_location_buyer&amp;utm_content=143113&amp;utm_term=0&amp;sv1=affiliate&amp;sv_campaign_id=143113&amp;awc=6220_1738665218_375bf34805ad46986aac73a28a519fa0"
+							>MissFortuneUK - Etsy France</a
+						>
+					</li>
+					<li><a href="https://www.emmydesign.se/en/">emmydesign</a></li>
+					<li>
+						<a href="https://retrospecd.com/"
+							>Retro Outfits | Retro Dresses | Retro Fashion | Retrospec&#39;d – Retrospec&#39;d
+							Clothing</a
+						>
+					</li>
+					<li>
+						<a href="https://elisedesign.com.au/collections/dresses">Dresses – Elise Design</a>
+					</li>
+					<li>
+						<a href="https://www.theprettydresscompany.com/"
+							>The Pretty Dress Company | Designed &amp; made in the UK</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://www.etsy.com/shop/BloodyEdith?source=aw&amp;utm_source=affiliate_window&amp;utm_medium=affiliate&amp;utm_campaign=us_location_buyer&amp;utm_content=143113&amp;utm_term=0&amp;sv1=affiliate&amp;sv_campaign_id=143113&amp;awc=6220_1738665248_e5e31c1daea1a8eff5254fd072423c21"
+							>BloodyEdith - Etsy France</a
+						>
+					</li>
+					<li>
+						<a href="https://www.vivienofholloway.com/"
+							>1950s Dresses &amp; Clothing l Vivien of Holloway</a
+						>
+					</li>
+					<li>
+						<a href="https://palava.co/collections/womens-dresses"
+							>Women&#39;s Vintage Style Dresses &amp; Jumpsuits | Made in England</a
+						>
+					</li>
+					<li>
+						<a href="https://www.thehouseoffoxy.com/"
+							>The House of Foxy: Vintage style clothing from 1930s, 1940s to 1970s</a
+						>
+					</li>
+					<li>
+						<a href="https://www.cherryvelvetplus.com/collections/dresses"
+							>Dresses – Cherry Velvet</a
+						>
+					</li>
+					<li><a href="https://www.penahaus.com/">Penahaus</a></li>
+
+					<li>
+						<a href="https://revivalvintage.co.uk/"
+							>Authentic Vintage Clothing | Revival Vintage – RevivalVintage (Si vous souhaitez
+							acheter sur ce site pouvez-vous nous en informer ? Plusieurs éléments ont déjà été
+							commandés par les proches de la mariée, si on peut éviter les doublons c’est mieux)</a
+						>
+					</li>
+					<li>
+						<a href="https://theseamstressofbloomsbury.co.uk/"
+							>The Seamstress of Bloomsbury: 1940s Dresses &amp; Vintage Clothing</a
+						>
+					</li>
+					<li>
+						<a href="https://morellos-clothing.co.uk/"
+							>Morellos | Classic Forties and Fifties Vintage Style Clothing</a
+						>
+					</li>
+				</ul>
+
+				<h4 style="font-weight: bold; color: white;">Chaussures</h4>
+
+				<ul>
+					<li>
+						<a href="https://memery.eu/"
+							>Vintage shoes - vintage inspired shoes and boots – memery</a
+						>
+					</li>
+					<li>
+						<a href="https://www.charliestoneshoes.com/en-fr"
+							>Vintage style flats for easy and accessible elegance, everyday. – Charlie Stone</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://topvintage.fr/fr/chaussures?msclkid=13c859f65acf150bbde83e578d48d463&amp;utm_source=bing&amp;utm_medium=cpc&amp;utm_campaign=FR%20%7C%20Search%20%7C%20Subcategorie%20%7C%20Branded&amp;utm_term=topvintage%20chaussures&amp;utm_content=Chaussures"
+							>Chaussures femme ? | Mode d’inspiration vintage | Topvintage</a
+						>
+					</li>
+					<li>
+						<a href="https://www.rocketoriginals.co.uk/"
+							>Reproduction 1940s &amp; 1950s Shoes &amp; Clothing - Rocket Originals</a
+						>
+					</li>
+					<li><a href="https://baitfootwear.com/">BAIT Footwear – B.A.I.T. Footwear</a></li>
+					<li><a href="https://www.penahaus.com/">Penahaus</a></li>
+					<li>
+						<a href="https://www.lolaramona.com/collections/lola-ramona-shoes"
+							>Lola Ramona Shoes - Lola Ramona</a
+						>
+					</li>
+					<li>
+						<a href="https://laveintinueve.com/fr/"
+							>Chaussures Pin-up et vêtements rétro style pour votre look</a
+						>
+					</li>
+				</ul>
 			</div>
-			<div class="_content" class:opened={men}>
-				<h3 style="font-weight: bold; color: white">La mode masculine des années 40.</h3>
-
+			<div class="_content" class:opened={men} id="men-content">
+				<h3
+					class="classy"
+					id="costumes"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Costumes
+				</h3>
 				<p>
-					Ce qui rend la mode masculine des années 1940 unique à la décennie, c’est la coupe des
-					vêtements, les motifs et les détails stylistiques qui démontraient le soutien patriotique
-					d’une personne à son pays (ou son absence).
+					Le costume est une pièce maîtresse du vestiaire masculin des années 40. Généralement en
+					trois pièces, il est bien ajusté et met en avant des épaules structurées. Les couleurs
+					restent sobres avec du gris, du marron ou du bleu marine, parfois agrémentées de motifs
+					comme le tweed, les chevrons ou les larges rayures craie.
 				</p>
 				<p>
-					Certains des détails clés de la mode masculine des années 1940 sont des pantalons taille
-					haute et larges, des manteaux de costume à revers larges ,des chemises à col large, des
-					cravates colorées et larges, des chaussures oxford bicolores et des chapeaux fedora à
-					large bord.  Remarquez que la tendance était large ? Par rapport à la coupe skinny
-					d’aujourd’hui, les années 1940 étaient axées sur le confort par le volume.
+					Les restrictions de guerre ont imposé un certain minimalisme dans les costumes, limitant
+					les gilets et favorisant des tissus mélangés avec de la rayonne.
+				</p>
+				<h3
+					class="classy"
+					id="pantalons"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Pantalons
+				</h3>
+				<p>
+					Les pantalons de cette époque sont taille haute avec des pinces et des jambes droites,
+					légèrement fuselées. Ils se portent volontiers avec des bretelles plutôt qu’une ceinture,
+					renforçant ainsi le style vintage.
+				</p>
+				<h3
+					class="classy"
+					id="chemises-et-vestes"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Chemises et vestes
+				</h3>
+				<p>
+					Les chemises blanches ou pastel à col en pointe sont des valeurs sûres. Elles
+					s’accompagnent idéalement d’une cravate large aux motifs géométriques, floraux ou art
+					déco. Les chemises colorées à rayures fines ou à pois sont aussi très tendance.
 				</p>
 				<p>
-					La plupart des hommes ont conservé leurs vêtements des années 1930 et les ont portés
-					jusqu’au début des années 40. C’était un signe de soutien à la guerre que d’être vu dans
-					les costumes et les manteaux d’avant-guerre. Les chaussures ont été ressemelées et les
-					chapeaux remodelés aussi longtemps que possible. Les vêtements usagés ont été transmis à
-					l’appartenance familiale et transformés en looks. Les costumes étaient principalement
-					vendus sans gilet. La plus grande influence des restrictions de la Seconde Guerre mondiale
-					sur la mode masculine a été l’introduction de la décontraction. Les hommes étaient
-					fatigués des uniformes et des costumes confinés.
+					Le gilet assorti au costume se fait plus rare en raison des restrictions, mais certains
+					hommes l’adoptent encore. Pour les jours plus frais, un trench-coat ou un manteau long en
+					laine sera parfait pour un look authentique.
 				</p>
-
-				<h3 style="font-weight: bold; color: white">LA MATIÈRE</h3>
+				<h3
+					class="classy"
+					id="accessoires"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Accessoires
+				</h3>
 				<p>
-					Les costumes des hommes des années 1940 étaient généralement fabriqués à partir de laine
-					épaisse, de laine peignée ou de tweed, mais pendant la guerre, des tissus de rayonne
-					synthétique mélangés à de la laine étaient généralement utilisés à la place.
-				</p>
-
-				<h3 style="font-weight: bold; color: white">LA COULEUR</h3>
-				<p>
-					Les couleurs des costumes pour hommes des années 1940 étaient atténuées : noir, bleu
-					marine, gris, brun foncé, beige et bleu moyen. Pendant l’été, les couleurs de tissu plus
-					claires étaient le gris moyen, le brun, le bleu moyen, le bleu-vert sarcelle et le beige.
-					Le blanc et l’ivoire, qui avaient été incroyablement populaires dans les années 1930, se
-					sont lentement estompés, n’étant portés que dans les climats tropicaux chauds.
+					Les chapeaux sont indispensables pour parfaire une tenue d’époque. Fedora, Trilby ou
+					encore casquette plate s’accordent parfaitement au style des années 40.
 				</p>
 				<p>
-					La plupart des costumes pour hommes des années 40 n’étaient pas de couleurs unies. Le
-					tweed, les chevrons, les carreaux, les rayures et les surplaids étaient des motifs de
-					costume très populaires. Les larges rayures craie étaient également un motif de costume
-					classique des années 40.
+					Les hommes complètent souvent leur tenue avec une montre de poche ou une montre-bracelet
+					en cuir. Les bretelles larges sont encore d&#39;usage, bien que les ceintures prennent le
+					pas. Les mouchoirs de poche en soie ou rayonne, souvent pliés en triangle, ajoutent une
+					touche sophistiquée.
 				</p>
-				<h3 style="font-weight: bold; color: white">LA VESTE</h3>
+				<h3
+					class="classy"
+					id="chaussures"
+					style="font-weight: bold; color: white; text-align: center"
+				>
+					Chaussures
+				</h3>
 				<p>
-					La veste à simple boutonnage avait 2-3 boutons, de larges épaules rembourrées, des poches
-					plaquées ou fendues et légèrement effilée à la taille. Les revers étaient larges, crantés
-					ou en pointe avec des bords arrondis. La grande largeur faisait paraître un homme plus
-					grand, même si la coupe était plus étroite que dans les années 30.
-				</p>
-				<p>
-					La veste à double boutonnage était encore plus populaire dans les années 1940 en raison de
-					la largeur supplémentaire qu’elle provoquait, bien que les ventes aient été limitées
-					pendant les années de guerre.
-				</p>
-				<h3 style="font-weight: bold; color: white">LE GILET</h3>
-				<p>
-					Les gilets de costume pour hommes des années 1940 étaient considérés comme un gaspillage à
-					la fois en temps de guerre et après, et la plupart des hommes préféraient ne pas porter de
-					gilet du tout avec leurs costumes. C’était plus frais et plus confortable sans eux. Les
-					gilets de costume assortis étaient coupés à col en V avec 7 à 6 boutons et des poches de
-					chaque côté.
-				</p>
-				<h3 style="font-weight: bold; color: white">LE PANTALON</h3>
-				<p>
-					Les pantalons de costume, les pantalons ou les pantalons des années 1940 étaient
-					généralement plats ou à plis simples. Ils étaient portés à la taille haute (au-dessus du
-					nombril) avec une bande de taille de 7.5cm de large.
+					Pour finir la tenue avec élégance, les richelieus en cuir noir ou marron sont des valeurs
+					sûres.
 				</p>
 				<p>
-					Les jambes du pantalon étaient larges autour de la cuisse, du genou et de la cheville
-					légèrement fuselée, ce qui est à l’opposé des costumes « skinny » d’aujourd’hui. Les
-					pantalons larges et taille haute sont difficiles à trouver dans les magasins aujourd’hui
-					(bien que cela change lentement.
-				</p>
-				<h3 style="font-weight: bold; color: white">LA CHEMISE</h3>
-				<p>
-					Les chemises habillées des hommes des années 1940 étaient généralement fabriquées en coton
-					avec un grand col pointu attaché appelé col pointe de lance au début des années 1940 et un
-					col classique plus court à la fin des années 1940. Les colliers modernes d’aujourd’hui
-					sont beaucoup plus petits.
-				</p>
-				<p>
-					Les chemises pour hommes des années 1940 étaient très colorées. Le blanc était une option,
-					mais les hommes choisissaient des chemises bleues, beiges, jaunes, vertes ou grises à
-					rayures fines ou à pois. La chemise était portée rentrée, avec une poche unique
-					facultative sur la poitrine.
-				</p>
-				<h3 style="font-weight: bold; color: white">LES ACCESSOIRES</h3>
-				<p>
-					Les bretelles étaient encore portées par les hommes dans les années 1940, bien que les
-					ceintures soient plus populaires. Les bretelles pour hommes des années 1940 étaient dotées
-					d’épaisses bandes élastiques avec des boucles de boutonnage. Des boutons ont été cousus à
-					l’intérieur de la ceinture pour attacher également des bretelles. Les bretelles étaient
-					rarement visibles, portées sous un gilet de costume ou un gilet ou cachées derrière le
-					costume ou le manteau.
-				</p>
-				<p>
-					Les ceintures pour hommes des années 1940 mesuraient environ 2.5cm de large avec de
-					petites boucles métalliques souvent recouvertes de cuir assorti. Le cuir de la ceinture
-					était beige, marron ou noir et pouvait être uni ou grainé, tressé ou estampillé d’un motif
-					western.
-				</p>
-				<p>
-					Aucun costume d’homme des années 1940 ne serait complet sans la cravate parfaite ! Les
-					cravates des années 1940 étaient fabriquées exclusivement à partir de soie, de rayonne et
-					de laine. Les grandes lignes géométriques, les lignes bouclées, les monogrammes et le
-					style Art déco ont été réalisés dans des couleurs patriotiques vives. Animaux, plantes,
-					fleurs, oiseaux, westerns et tropicaux étaient partout.
-				</p>
-				<p>
-					Aucun costume des années 1940 ne serait complet sans un mouchoir de poche. Ceux-ci ont été
-					fabriqués à partir de rayonne ou de soie après la guerre et étaient souvent de couleurs
-					vives, ou ils avaient des motifs cachemire ou d’autres motifs classiques. Les mouchoirs de
-					poche des hommes des années 1940 étaient pliés en triangle et placés côté ouvert vers le
-					haut, exposant deux ou trois pointes.
+					Les derbies et mocassins sont également de bonnes options pour adopter un look chic et
+					intemporel. Les chaussures bicolores Oxford gagnent en popularité, ajoutant une touche
+					d’originalité.
 				</p>
 
-				<h3 style="font-weight: bold; color: white">Inspirations</h3>
-				<div class="carousel-wrapper">gn
+				<h3 class="classy" style="font-weight: bold; color: white; text-align:center;">
+					Inspirations
+				</h3>
+				<div class="carousel-wrapper">
 					<Carousel
 						style="height:100%"
 						containerClass={'px-10'}
@@ -338,28 +520,84 @@
 							/>
 						</div>
 					</Carousel>
-					<!-- <Carousel
-						bind:this={carousel2}
-						let:loaded
-						let:showPrevPage2
-						let:showNextPage2
-						style="width: 50%"
-					>
-						<div slot="prev" on:click={showPrevPage2} class="custom-arrow custom-arrow-prev">
-							<i />
-						</div>
-						{#each menImg as src, imageIndex (src)}
-							<div class="img-container" style="display: flex; justify-content:center;">
-								{#if loaded.includes(imageIndex)}
-									<img style="height: 300px; width: auto" {src} alt="inspiration" />
-								{/if}
-							</div>
-						{/each}
-						<div slot="next" on:click={showNextPage2} class="custom-arrow custom-arrow-next">
-							<i />
-						</div>
-					</Carousel> -->
 				</div>
+
+				<h3 class="classy" style="font-weight: bold; color: white; text-align:center;">
+					Où acheter ?
+				</h3>
+
+				<h4 style="font-weight: bold; color: white;">Vêtements</h4>
+				<ul>
+					<li>
+						<a href="https://www.hockerty.fr/fr/"
+							>Hockerty : Habillez votre authenticité en sur-mesure</a
+						>
+					</li>
+					<li><a href="http://morellos-clothing.co.uk/">Morello’s Clothing</a></li>
+					<li><a href="http://www.chestercordite.com/">Chester Cordite</a></li>
+					<li>
+						<a href="http://www.mapledoram.com/product-category/mens-gents-1940s/">Mapledoram</a>
+					</li>
+					<li><a href="http://www.darcyclothing.com/">Darcy Clothing</a></li>
+					<li><a href="https://www.somelikeitholy.com/gentlemen-c-1.html">Some Like it Holy</a></li>
+					<li><a href="http://www.vecona-vintage.com/">Vecona Vintage</a></li>
+					<li><a href="http://www.heydayonline.co.uk/default/mens-clothing">Heyday!</a></li>
+					<li><a href="http://www.juke-jive.de/">Juke Jive</a></li>
+					<li>
+						<a
+							href="https://www.awin1.com/cread.php?awinmid=6220&amp;awinaffid=143113&amp;platform=dl&amp;ued=https%3A%2F%2Fwww.etsy.com%2Fshop%2FVivaLaRosaVintage%3Fref%3Dshop-header-name%26listing_id%3D1352778721%26from_page%3Dlisting"
+							>Viva La Rose Vintage –
+						</a>
+					</li>
+					<li>
+						<a href="http://www.onthesunnyside.nl/store/c2/menswear.html">On the Sunny Side</a>
+					</li>
+					<li><a href="https://www.cousinjack.co.uk/">Cousin Jack</a></li>
+
+					<li>
+						<a href="https://revivalvintage.co.uk/"
+							>Authentic Vintage Clothing | Revival Vintage – RevivalVintage (Si vous souhaitez
+							acheter sur ce site pouvez-vous nous en informer ? Plusieurs éléments ont déjà été
+							commandés par les proches de la mariée, si on peut éviter les doublons c’est mieux)</a
+						>
+					</li>
+					<li>
+						<a href="https://theseamstressofbloomsbury.co.uk/"
+							>The Seamstress of Bloomsbury: 1940s Dresses &amp; Vintage Clothing</a
+						>
+					</li>
+					<li>
+						<a href="https://morellos-clothing.co.uk/"
+							>Morellos | Classic Forties and Fifties Vintage Style Clothing</a
+						>
+					</li>
+				</ul>
+
+				<h4 style="font-weight: bold; color: white;">Chaussures</h4>
+
+				<ul>
+					<li><a href="http://www.remixvintageshoes.com/index3.html">ReMix Vintage</a></li>
+					<li>
+						<a
+							href="https://shareasale.com/r.cfm?b=451710&amp;u=403774&amp;m=45593&amp;urllink=https%3A%2F%2Fwww%2Ejohnstonmurphy%2Ecom%2Fmens%2Dlaceup%3Fsscid%3D91k3%5Fbc1gu%26utm%5Fsource%3DShareASale%26utm%5Fmedium%3Daffiliate%26utm%5Fcampaign%3Dshareasale&amp;afftrack=mensshops"
+							>Johnson and Murphy</a
+						> –
+					</li>
+					<li><a href="https://fave.co/2mCK0bi">G.H. Bass</a></li>
+					<li><a href="http://www.spectatorshoes4men.com/">Spectator Shoes 4 Men</a></li>
+					<li>
+						<a href="http://www.walkover.com/mens-vintage%20collection"
+							>Walk-Over Vintage Collection</a
+						>
+					</li>
+					<li><a href="http://www.civilwarboots.com/">Mattimore Boots</a></li>
+					<li><a href="https://fave.co/2mCM9nA">Keds</a></li>
+					<li><a href="https://fave.co/2o4mgu0">Original Champion</a></li>
+					<li><a href="https://www.undandy.com/">Undandy</a></li>
+					<li><a href="https://fave.co/2mCFQA8">Forzieri</a></li>
+					<li><a href="http://creeperscustom.com/gb/">CreepersCustom</a></li>
+					<li><a href="http://www.harr-shoes.com/">Harr Shoes</a></li>
+				</ul>
 			</div>
 			<div class="_footer">
 				<button
@@ -367,6 +605,7 @@
 					on:click={() => {
 						men = false;
 						women = !women;
+						dressCode.scrollIntoView({ behavior: 'smooth' });
 					}}>{women ? 'Voir moins' : 'Mesdames'}</button
 				>
 				<button
@@ -374,6 +613,7 @@
 					on:click={() => {
 						women = false;
 						men = !men;
+						dressCode.scrollIntoView({ behavior: 'smooth' });
 					}}>{men ? 'Voir moins' : 'Messieurs'}</button
 				>
 			</div>
@@ -394,7 +634,7 @@
 		</div>
 
 		<div class="code" id="vin" style="background: #70162e;">
-			<h1>Vin d'honneur, 16h</h1>
+			<h1>Cérémonie laïque, 15h30</h1>
 			<p>La Belle Grange 751 Bernstraete, 59270 Bailleul</p>
 			<iframe
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.78350911202!2d2.6827663767118977!3d50.705401868973794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dcdf7f7fea7c77%3A0xa722ce9ba7ca02f9!2sLa%20Belle%20Grange!5e0!3m2!1sfr!2sfr!4v1727466332357!5m2!1sfr!2sfr"
@@ -439,6 +679,7 @@
 		font-style: normal;
 		font-variation-settings: 'wdth' 100;
 		--sc-color-rgb-light: rgb(255, 255, 255);
+		--color-theme-1: #f7f7f7;
 	}
 
 	.carousel-wrapper {
@@ -529,7 +770,7 @@
 			display: flex;
 			justify-content: center;
 			padding: 1rem;
-			gap: 1rem;
+			gap: 2rem;
 
 			button.link {
 				background: none;
@@ -807,7 +1048,7 @@
 
 	#nav:checked + .nav__open i {
 		background-color: var(--shades);
-		transition: transform 0.2s ease;
+		transition: transform 0.4s ease-in-out;
 	}
 
 	#nav:checked + .nav__open i:nth-child(1) {
@@ -1200,13 +1441,44 @@
 		background-color: black;
 	}
 
+	h3.classy {
+		text-align: center;
+		font-size: 30px;
+		font-weight: 300;
+		color: #222;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+
+		display: grid;
+		grid-template-columns: 1fr max-content 1fr;
+		grid-template-rows: 27px 0;
+		grid-gap: 20px;
+		align-items: center;
+	}
+
+	h3.classy:after,
+	h3.classy:before {
+		content: ' ';
+		display: block;
+		border-bottom: 1px solid #f8f8f8;
+		border-top: 1px solid #f8f8f8;
+		height: 5px;
+		//background-color:#f8f8f8;
+	}
+
+	ul {
+		li {
+			margin-bottom: 10px;
+		}
+	}
+
 	@media screen and (max-width: 799px) {
 		.carousel-wrapper {
 			display: flex;
 			justify-content: center;
 			width: 100%;
 		}
-		
+
 		.w-4 {
 			width: 0.5rem;
 		}
@@ -1290,7 +1562,7 @@
 		.nav__open {
 			position: absolute;
 			right: 10px;
-			top: 16px;
+			top: 10px;
 			display: block;
 			width: 48px;
 			height: 48px;
