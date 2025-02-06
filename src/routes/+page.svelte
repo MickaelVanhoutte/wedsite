@@ -8,6 +8,12 @@
 	let fullPic: HTMLDivElement;
 	let womenImg: string[] = [];
 	let menImg: string[] = [];
+	let videos: {id: string, type: 'tiktok' | 'youtube'}[] = [
+		{id: '7429837847928114475', type: 'tiktok'},
+		{id: '7383809111571352878', type: 'tiktok'},
+		{id: '7089084396082302214', type: 'tiktok'},
+		{id: 'https://www.youtube.com/embed/lyuFLU2Zqz0?si=TPSUnCimUlDR5Nr7', type: 'youtube'},
+	];
 
 	[...Array(31).keys()].forEach((i) => {
 		import(`$lib/images/inspi/women/${i}.jpg`).then((img) => {
@@ -34,6 +40,7 @@
 		href="https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 		rel="stylesheet"
 	/>
+
 </svelte:head>
 
 <header class="header">
@@ -546,11 +553,11 @@
 					<li>
 						<a
 							href="https://www.awin1.com/cread.php?awinmid=6220&amp;awinaffid=143113&amp;platform=dl&amp;ued=https%3A%2F%2Fwww.etsy.com%2Fshop%2FVivaLaRosaVintage%3Fref%3Dshop-header-name%26listing_id%3D1352778721%26from_page%3Dlisting"
-							>Viva La Rose Vintage –
+							>Viva La Rose Vintage
 						</a>
 					</li>
 					<li>
-						<a href="http://www.onthesunnyside.nl/store/c2/menswear.html">On the Sunny Side</a>
+						<a href="http://www.onthesunnyside.nl">On the Sunny Side</a>
 					</li>
 					<li><a href="https://www.cousinjack.co.uk/">Cousin Jack</a></li>
 
@@ -576,26 +583,18 @@
 				<h4 style="font-weight: bold; color: white;">Chaussures</h4>
 
 				<ul>
-					<li><a href="http://www.remixvintageshoes.com/index3.html">ReMix Vintage</a></li>
+					<li><a href="https://remixvintageshoes.com/">ReMix Vintage</a></li>
 					<li>
-						<a
-							href="https://shareasale.com/r.cfm?b=451710&amp;u=403774&amp;m=45593&amp;urllink=https%3A%2F%2Fwww%2Ejohnstonmurphy%2Ecom%2Fmens%2Dlaceup%3Fsscid%3D91k3%5Fbc1gu%26utm%5Fsource%3DShareASale%26utm%5Fmedium%3Daffiliate%26utm%5Fcampaign%3Dshareasale&amp;afftrack=mensshops"
-							>Johnson and Murphy</a
-						> –
+						<a href="https://www.johnstonmurphy.com/">Johnson and Murphy</a>
 					</li>
-					<li><a href="https://fave.co/2mCK0bi">G.H. Bass</a></li>
-					<li><a href="http://www.spectatorshoes4men.com/">Spectator Shoes 4 Men</a></li>
+					<li><a href="https://www.ghbass-eu.com/">G.H. Bass</a></li>
 					<li>
-						<a href="http://www.walkover.com/mens-vintage%20collection"
-							>Walk-Over Vintage Collection</a
-						>
+						<a href="http://www.walkover.com">Walk-Over Vintage Collection</a>
 					</li>
 					<li><a href="http://www.civilwarboots.com/">Mattimore Boots</a></li>
-					<li><a href="https://fave.co/2mCM9nA">Keds</a></li>
-					<li><a href="https://fave.co/2o4mgu0">Original Champion</a></li>
-					<li><a href="https://www.undandy.com/">Undandy</a></li>
-					<li><a href="https://fave.co/2mCFQA8">Forzieri</a></li>
-					<li><a href="http://creeperscustom.com/gb/">CreepersCustom</a></li>
+					<li><a href="https://www.keds.com/">Keds</a></li>
+					<li><a href="https://www.forzieri.com/mens-shoes/forzieri">Forzieri</a></li>
+					<li><a href="https://www.madetomeasureshoes.com/">Made to measure shoes</a></li>
 					<li><a href="http://www.harr-shoes.com/">Harr Shoes</a></li>
 				</ul>
 			</div>
@@ -648,6 +647,50 @@
 		</div>
 
 		<div class="code" id="musique" style="background: #70162e;">
+			<h1>Let's danse ?</h1>
+			<p>Apprenez quelques choré et dansez avec nous !</p>
+
+			<Carousel
+						style="height:100%"
+						containerClass={'px-10'}
+						slides={videos}
+						layout={{ default: 1 }}
+						oneAtTime={true}
+					>
+						<div style="height:100%; " slot="slide" let:slide>
+							<div style="height: 100%; width: 100%; display: flex; justify-content: center;  align-items: center;">
+								{#if slide.type === 'tiktok'}
+									<blockquote
+										class="tiktok-embed"
+										data-video-id={slide.id}
+										style="max-width: 605px;min-width: 325px; max-height: 619px;"
+									>
+									<section></section>
+									</blockquote>
+								{:else}
+									<iframe width="560" height="315" src={slide.id} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								{/if}
+							</div>
+						</div>
+						<div
+							slot="progress"
+							let:progress
+							let:scrollTo
+							data-progress
+							on:pointerdown={scrollTo}
+							class="absolute left-1/4 -bottom-5 w-1/2 overflow-hidden cursor-pointer h-2 justify-center flex items-center z-10 rounded-sm bg-slate-500"
+						>
+							<div
+								style:transform={`scaleX(${progress}%)`}
+								class="w-full h-full pointer-events-none transition-all ease-linear origin-left bg-slate-200"
+							/>
+						</div>
+					</Carousel>
+			
+			<script async src="https://www.tiktok.com/embed.js"></script>
+		</div>
+
+		<div class="code" id="musique" style="background: #70162e;">
 			<h1>Envie de musique ?</h1>
 			<p>Nous ne prendrons probablement pas en compte toutes vos demandes, mais qui sait ?</p>
 			<form action="mailto:vzwed2025@gmail.com" method="post" enctype="text/plain">
@@ -666,10 +709,6 @@
 </section>
 
 <div bind:this={fullPic} id="fullpage" on:click={() => (fullPic.style.display = 'none')}></div>
-
-<audio id="musicplayer" autoplay style="visibility: hidden;">
-	<source src={dance} />
-</audio>
 
 <style lang="scss">
 	* {
